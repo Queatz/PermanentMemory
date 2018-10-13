@@ -7,4 +7,11 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="submit">Submit</string>
+    <string name="close">Close</string>
+    <string name="source_subject_name">Source subject name</string>
+    <string name="subject_name">Subject name</string>
+    <string name="set_name">Set name</string>
+    <string name="rename_set">Rename set</string>
+    <string name="reverse_subject_name">Reverse subject name</string>
+    <string name="update_subject">Update subject</string>
 </resources>

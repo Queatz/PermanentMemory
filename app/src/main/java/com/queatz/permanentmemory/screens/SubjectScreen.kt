@@ -1,5 +1,7 @@
 package com.queatz.permanentmemory.screens
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -17,5 +19,12 @@ class SubjectScreen : Fragment() {
         super.onActivityCreated(savedInstanceState)
         setRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         setRecyclerView.adapter = SubjectAdapter()
+
+        moreButton.setOnClickListener {
+            AlertDialog.Builder(activity)
+                    .setPositiveButton(R.string.update_subject) { _: DialogInterface, _: Int -> }
+                    .setView(layoutInflater.inflate(R.layout.modal_subject_settings, null, false))
+                    .show()
+        }
     }
 }

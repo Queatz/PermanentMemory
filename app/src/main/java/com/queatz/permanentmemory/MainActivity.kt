@@ -46,6 +46,8 @@ class MainActivity : FragmentActivity(), NavigationView.OnNavigationItemSelected
         return true
     }
 
+
+
     private fun show(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
                 .replace(R.id.contentFrame, fragment)
