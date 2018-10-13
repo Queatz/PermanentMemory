@@ -2,26 +2,25 @@ package com.queatz.permanentmemory
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
-import android.support.design.widget.Snackbar
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import android.support.v4.view.GravityCompat
-import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import com.queatz.permanentmemory.screens.PlayScreen
+import com.queatz.permanentmemory.screens.SetScreen
+import com.queatz.permanentmemory.screens.SubjectScreen
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : FragmentActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        actionButton.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+        navigationView.setNavigationItemSelectedListener(this)
 
         menuButton.setOnClickListener { drawerLayout.openDrawer(GravityCompat.START) }
 
-        navigationView.setNavigationItemSelectedListener(this)
+        show(SubjectScreen())
     }
 
     override fun onBackPressed() {
@@ -35,9 +34,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
+            R.id.nav_vietnamese -> show(SubjectScreen())
+            R.id.nav_german -> show(PlayScreen())
+            R.id.nav_russian -> show(SetScreen())
         }
 
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun show(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.contentFrame, fragment)
+                .commit()
     }
 }
