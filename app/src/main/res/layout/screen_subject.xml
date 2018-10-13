@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:padding="@dimen/padDouble"
         android:gravity="center_horizontal"
         android:textAppearance="?android:textAppearanceLarge"
@@ -30,9 +31,11 @@
         android:id="@+id/setRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/padDouble"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subjectProgress"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:clipChildren="false" />
 
 </android.support.constraint.ConstraintLayout>

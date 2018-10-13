@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.queatz.permanentmemory.R
-import com.queatz.permanentmemory.adapters.SubjectAdapter
+import com.queatz.permanentmemory.adapters.SetAdapter
 import kotlinx.android.synthetic.main.screen_subject.*
 
 class SetScreen : Fragment() {
@@ -16,6 +16,6 @@ class SetScreen : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        setRecyclerView.adapter = SubjectAdapter()
+        setRecyclerView.adapter = SetAdapter()
     }
 }

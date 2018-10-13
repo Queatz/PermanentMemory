@@ -1,11 +1,14 @@
 package com.queatz.permanentmemory
 
+import android.app.Service
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.view.GravityCompat
 import android.view.MenuItem
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.screens.PlayScreen
 import com.queatz.permanentmemory.screens.SetScreen
@@ -47,5 +50,16 @@ class MainActivity : FragmentActivity(), NavigationView.OnNavigationItemSelected
         supportFragmentManager.beginTransaction()
                 .replace(R.id.contentFrame, fragment)
                 .commit()
+        showKeyboard(findViewById(android.R.id.content), false)
+
+    }
+
+    private fun showKeyboard(view: View, show: Boolean) {
+        val inputMethodManager = getSystemService(Service.INPUT_METHOD_SERVICE) as InputMethodManager
+
+        when (show) {
+            true -> inputMethodManager.showSoftInput(view, 0)
+            false -> inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 }
