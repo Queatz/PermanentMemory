@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.queatz.permanentmemory.MainActivity
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.adapters.SubjectAdapter
 import kotlinx.android.synthetic.main.screen_subject.*
@@ -18,7 +19,7 @@ class SubjectScreen : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        setRecyclerView.adapter = SubjectAdapter()
+        setRecyclerView.adapter = SubjectAdapter { _ -> (activity as MainActivity).show(PlayScreen(), true)}
 
         moreButton.setOnClickListener {
             AlertDialog.Builder(activity)

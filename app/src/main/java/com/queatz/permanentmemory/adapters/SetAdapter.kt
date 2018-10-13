@@ -13,7 +13,7 @@ class SetAdapter : RecyclerView.Adapter<SetViewHolder>() {
 
     override fun getItemCount() = 14
 
-    override fun onBindViewHolder(viewHolder: SetViewHolder, viewType: Int) {
+    override fun onBindViewHolder(viewHolder: SetViewHolder, position: Int) {
 
     }
 }

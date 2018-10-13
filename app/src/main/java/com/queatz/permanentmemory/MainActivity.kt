@@ -46,12 +46,16 @@ class MainActivity : FragmentActivity(), NavigationView.OnNavigationItemSelected
         return true
     }
 
-
-
-    private fun show(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
+    fun show(fragment: Fragment, addToBackStack: Boolean = false) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
                 .replace(R.id.contentFrame, fragment)
-                .commit()
+
+        if (addToBackStack) {
+            fragmentTransaction.addToBackStack(null)
+        }
+
+        fragmentTransaction.commit()
+
         showKeyboard(findViewById(android.R.id.content), false)
 
     }
