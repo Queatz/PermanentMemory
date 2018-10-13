@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.view.GravityCompat
 import android.view.MenuItem
+import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.screens.PlayScreen
 import com.queatz.permanentmemory.screens.SetScreen
 import com.queatz.permanentmemory.screens.SubjectScreen
@@ -32,7 +33,6 @@ class MainActivity : FragmentActivity(), NavigationView.OnNavigationItemSelected
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_vietnamese -> show(SubjectScreen())
             R.id.nav_german -> show(PlayScreen())

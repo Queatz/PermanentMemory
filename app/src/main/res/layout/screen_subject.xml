@@ -1,16 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/subjectName"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:padding="@dimen/padDouble"
         android:gravity="center_horizontal"
         android:textAppearance="?android:textAppearanceLarge"
         android:text="Tiếng Việt"/>
+
+    <ProgressBar
+        android:id="@+id/subjectProgress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:indeterminate="false"
+        android:progress="50"
+        app:layout_constraintEnd_toEndOf="@+id/subjectName"
+        app:layout_constraintStart_toStartOf="@+id/subjectName"
+        app:layout_constraintTop_toBottomOf="@+id/subjectName" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/setRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subjectProgress"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
