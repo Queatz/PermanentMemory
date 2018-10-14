@@ -19,24 +19,42 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/padDouble">
+            android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/setName"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padDouble"
+            android:layout_marginStart="@dimen/padDouble"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:text="Numbers"
             android:textAppearance="?android:textAppearanceLarge" />
+
+
+        <ImageButton style="@style/Widget.AppCompat.Button.Borderless"
+            android:contentDescription="@string/navigation_drawer_open"
+            android:id="@+id/moreButton"
+            android:layout_width="@dimen/defaultButtonWidth"
+            android:layout_height="@dimen/defaultButtonWidth"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/padHalf"
+            android:minWidth="0dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            android:tint="@color/colorAccent"/>
 
         <TextView
             android:id="@+id/setStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="In Progress"
+            android:layout_marginStart="@dimen/pad"
+            app:layout_constraintTop_toTopOf="@id/setName"
+            app:layout_constraintBottom_toBottomOf="@id/setName"
+            app:layout_constraintStart_toEndOf="@id/setName"
+            android:text="(In Progress)"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@color/colorAccent"/>
 
@@ -46,10 +64,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/pad"
+            android:layout_marginBottom="@dimen/padDouble"
+            android:layout_marginStart="@dimen/padDouble"
+            android:layout_marginEnd="@dimen/padDouble"
             android:indeterminate="false"
             android:progress="25"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/setName"/>
 
         </android.support.constraint.ConstraintLayout>

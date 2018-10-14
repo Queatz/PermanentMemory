@@ -7,7 +7,9 @@ import android.view.ViewGroup
 
 import com.queatz.permanentmemory.R
 
-class SubjectAdapter constructor(private val onClickListener: (Int) -> Unit) : RecyclerView.Adapter<SubjectViewHolder>() {
+class SubjectAdapter constructor(
+        private val onClickListener: (Int) -> Unit,
+        private val onMoreClickListener: (Int) -> Unit) : RecyclerView.Adapter<SubjectViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             SubjectViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_set, parent, false))
 
@@ -15,9 +17,11 @@ class SubjectAdapter constructor(private val onClickListener: (Int) -> Unit) : R
 
     override fun onBindViewHolder(viewHolder: SubjectViewHolder, position: Int) {
         viewHolder.cardView.setOnClickListener { onClickListener.invoke(position) }
+        viewHolder.moreButton.setOnClickListener { onMoreClickListener.invoke(position) }
     }
 }
 
 class SubjectViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val cardView = itemView.findViewById<View>(R.id.cardView)
+    val cardView = itemView.findViewById<View>(R.id.cardView)!!
+    val moreButton = itemView.findViewById<View>(R.id.moreButton)!!
 }

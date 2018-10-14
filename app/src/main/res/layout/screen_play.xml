@@ -25,7 +25,7 @@
         app:layout_constraintBottom_toTopOf="@+id/submitButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:padding="@dimen/pad"
+        android:padding="@dimen/padDouble"
         android:hint="English"
         android:gravity="center_horizontal"
         android:textAppearance="?android:textAppearanceLarge"

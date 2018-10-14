@@ -19,7 +19,10 @@ class SubjectScreen : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        setRecyclerView.adapter = SubjectAdapter { _ -> (activity as MainActivity).show(PlayScreen(), true)}
+        setRecyclerView.adapter = SubjectAdapter(
+                { _ -> (activity as MainActivity).show(PlayScreen(), true)},
+                { _ -> (activity as MainActivity).show(SetScreen(), true)}
+        )
 
         moreButton.setOnClickListener {
             AlertDialog.Builder(activity)
