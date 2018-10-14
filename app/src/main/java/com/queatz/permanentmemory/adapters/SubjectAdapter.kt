@@ -9,16 +9,29 @@ import com.queatz.permanentmemory.R
 
 class SubjectAdapter constructor(
         private val onClickListener: (Int) -> Unit,
-        private val onMoreClickListener: (Int) -> Unit) : RecyclerView.Adapter<SubjectViewHolder>() {
+        private val onMoreClickListener: (Int) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            SubjectViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_set, parent, false))
+            when (viewType) {
+                0 -> SubjectViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_set, parent, false))
+                else -> ActionViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_action, parent, false))
+            }
 
     override fun getItemCount() = 4
 
-    override fun onBindViewHolder(viewHolder: SubjectViewHolder, position: Int) {
-        viewHolder.cardView.setOnClickListener { onClickListener.invoke(position) }
-        viewHolder.moreButton.setOnClickListener { onMoreClickListener.invoke(position) }
+    override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
+        when (viewHolder) {
+            is SubjectViewHolder -> {
+                viewHolder.cardView.setOnClickListener { onClickListener.invoke(position) }
+                viewHolder.moreButton.setOnClickListener { onMoreClickListener.invoke(position) }
+            }
+            is ActionViewHolder -> {
+                viewHolder.actionButton.text = viewHolder.actionButton.resources.getText(R.string.add_a_set)
+                viewHolder.actionButton.setOnClickListener {  }
+            }
+        }
     }
+
+    override fun getItemViewType(position: Int) = when (position) { itemCount - 1 -> 1 else -> 0 }
 }
 
 class SubjectViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -15,4 +15,6 @@
     <string name="reverse_subject_name">Reverse subject name</string>
     <string name="update_subject">Update subject</string>
     <string name="add_a_subject">Add a subject</string>
+    <string name="add_a_set">Add a set</string>
+    <string name="add_an_item">Add an item</string>
 </resources>
