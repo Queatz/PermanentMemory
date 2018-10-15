@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditText
-        android:id="@+id/subjectNameText"
+        android:id="@+id/subjectName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padDouble"
@@ -22,11 +22,11 @@
         android:inputType="textCapSentences" />
 
     <EditText
-        android:id="@+id/inverseSubjectNameText"
+        android:id="@+id/inverseSubjectName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padDouble"
-        app:layout_constraintTop_toBottomOf="@+id/subjectNameText"
+        app:layout_constraintTop_toBottomOf="@+id/subjectName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="@dimen/pad"

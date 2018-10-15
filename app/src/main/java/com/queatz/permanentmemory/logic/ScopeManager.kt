@@ -10,11 +10,22 @@ class ScopeManager : PoolMember() {
         dataSubscriptions.add(dataSubscription)
     }
 
+    fun clear() {
+        dataSubscriptions.forEach { it.cancel() }
+        dataSubscriptions.clear()
+    }
+
+    fun clear(dataSubscription: DataSubscription?) {
+        dataSubscriptions.remove(dataSubscription)
+        dataSubscription?.cancel()
+    }
+
     override fun onPoolEnd() {
         dataSubscriptions.forEach { it.cancel() }
     }
 }
 
-fun DataSubscription.addToScope(scope: ScopeManager) {
+fun DataSubscription.addToScope(scope: ScopeManager): DataSubscription {
     scope.add(this)
+    return this
 }
