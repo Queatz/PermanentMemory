@@ -7,6 +7,6 @@ import java.util.*
 @BaseEntity
 open class BaseModel(
         @Id var objectBoxId: Long = 0,
-        var created: Date,
-        var updated: Date
+        var created: Date = Date(),
+        var updated: Date = Date()
 )
