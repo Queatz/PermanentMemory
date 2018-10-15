@@ -28,7 +28,7 @@ class SetScreen : Fragment() {
 
     private lateinit var set: SetModel
     private lateinit var itemAdapter: ItemAdapter
-    private var setsSubscription: DataSubscription? = null
+    private var itemsSubscription: DataSubscription? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
             inflater.inflate(R.layout.screen_set, container, false)
@@ -65,8 +65,8 @@ class SetScreen : Fragment() {
 
     private fun update() {
         setName.text = set.name
-        on(ScopeManager::class).clear(setsSubscription)
-        setsSubscription = app.on(DataManager::class).box(ItemModel::class).query()
+        on(ScopeManager::class).clear(itemsSubscription)
+        itemsSubscription = app.on(DataManager::class).box(ItemModel::class).query()
                 .equal(ItemModel_.set, set.objectBoxId)
                 .build()
                 .subscribe()
