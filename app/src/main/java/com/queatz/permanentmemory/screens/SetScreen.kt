@@ -14,10 +14,7 @@ import com.queatz.permanentmemory.logic.DataManager
 import com.queatz.permanentmemory.logic.EditorManager
 import com.queatz.permanentmemory.logic.ScopeManager
 import com.queatz.permanentmemory.logic.addToScope
-import com.queatz.permanentmemory.models.ItemModel
-import com.queatz.permanentmemory.models.ItemModel_
-import com.queatz.permanentmemory.models.SetModel
-import com.queatz.permanentmemory.models.SetModel_
+import com.queatz.permanentmemory.models.*
 import com.queatz.permanentmemory.pool.on
 import com.queatz.permanentmemory.pool.onEnd
 import io.objectbox.android.AndroidScheduler
@@ -64,6 +61,7 @@ class SetScreen : Fragment() {
     }
 
     private fun update() {
+        itemAdapter.subject = app.on(DataManager::class).box(SubjectModel::class).get(set.subject)
         setName.text = set.name
         on(ScopeManager::class).clear(itemsSubscription)
         itemsSubscription = app.on(DataManager::class).box(ItemModel::class).query()

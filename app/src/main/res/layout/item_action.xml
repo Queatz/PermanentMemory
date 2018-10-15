@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/actionButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,7 +16,7 @@
         android:background="?selectableItemBackground"
         android:padding="@dimen/padDouble"
         android:gravity="center_horizontal"
-        tools:text="Add set"
+        tools:text="Add a set"
         android:clickable="true"
         android:textAppearance="?android:textAppearanceMedium"
         android:textAllCaps="true"

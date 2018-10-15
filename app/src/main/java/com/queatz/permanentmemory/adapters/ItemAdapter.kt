@@ -2,13 +2,20 @@ package com.queatz.permanentmemory.adapters
 
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 
 import com.queatz.permanentmemory.R
+import com.queatz.permanentmemory.app
+import com.queatz.permanentmemory.logic.DataManager
 import com.queatz.permanentmemory.models.ItemModel
+import com.queatz.permanentmemory.models.SubjectModel
+import com.queatz.permanentmemory.pool.on
 
 class ItemAdapter constructor(
         private val onDeleteClickListener: (item: ItemModel) -> Unit,
@@ -16,6 +23,7 @@ class ItemAdapter constructor(
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var isInitialSetLoaded = false
+    var subject: SubjectModel? = null
 
     var items: MutableList<ItemModel> = ArrayList()
         set(value) {
@@ -26,7 +34,9 @@ class ItemAdapter constructor(
                 isInitialSetLoaded = true
             }
 
-            val diffResult = DiffUtil.calculateDiff(ModelDiffCallback(items, value))
+            val diffResult = DiffUtil.calculateDiff(object : ModelDiffCallback(items, value) {
+                override fun areContentsTheSame(oldPosition: Int, newPosition: Int) = true
+            })
             items.clear()
             items.addAll(value)
             diffResult.dispatchUpdatesTo(this)
@@ -43,7 +53,30 @@ class ItemAdapter constructor(
     override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
         when (viewHolder) {
             is SetViewHolder -> {
+                val item = items[position]
                 viewHolder.deleteButton.setOnClickListener { onDeleteClickListener.invoke(items[position]) }
+                viewHolder.questionText.setText(item.question)
+                viewHolder.answerText.setText(item.answer)
+                viewHolder.questionText.hint = subject?.name
+                viewHolder.answerText.hint = subject?.inverse
+                viewHolder.questionText.addTextChangedListener(object : TextWatcher {
+                    override fun afterTextChanged(text: Editable?) {
+                        item.question = text.toString()
+                        app.on(DataManager::class).box(ItemModel::class).put(item)
+                    }
+
+                    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                })
+                viewHolder.answerText.addTextChangedListener(object : TextWatcher {
+                    override fun afterTextChanged(text: Editable?) {
+                        item.answer = text.toString()
+                        app.on(DataManager::class).box(ItemModel::class).put(item)
+                    }
+
+                    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                })
             }
             is ActionViewHolder -> {
                 viewHolder.actionButton.text = viewHolder.actionButton.resources.getText(R.string.add_an_item)
@@ -58,4 +91,6 @@ class ItemAdapter constructor(
 class SetViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val percentLearnedButton = itemView.findViewById<Button>(R.id.percentLearnedButton)
     val deleteButton = itemView.findViewById<Button>(R.id.deleteButton)
+    val questionText = itemView.findViewById<EditText>(R.id.questionText)
+    val answerText = itemView.findViewById<EditText>(R.id.answerText)
 }
