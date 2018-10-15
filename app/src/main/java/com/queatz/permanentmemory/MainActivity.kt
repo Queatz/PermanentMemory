@@ -4,14 +4,13 @@ import android.app.Service
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
+import android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import android.support.v4.view.GravityCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.queatz.permanentmemory.adapters.WorldAdapter
-import com.queatz.permanentmemory.logic.ContextManager
-import com.queatz.permanentmemory.logic.DataManager
-import com.queatz.permanentmemory.logic.NavigationManager
+import com.queatz.permanentmemory.logic.*
 import com.queatz.permanentmemory.models.SubjectModel
 import com.queatz.permanentmemory.pool.on
 import com.queatz.permanentmemory.pool.onEnd
@@ -45,8 +44,9 @@ class MainActivity : FragmentActivity() {
                 .subscribe()
                 .on(AndroidScheduler.mainThread())
                 .observer { worldAdapter.items = it }
+                .addToScope(on(ScopeManager::class))
 
-        //TODO("Show last active subject")
+        //TODO("Show last active subject or main screen")
         show(SubjectScreen())
     }
 
@@ -54,23 +54,29 @@ class MainActivity : FragmentActivity() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
         } else {
-            val fragmentTransaction = supportFragmentManager.beginTransaction()
-            if (supportFragmentManager.backStackEntryCount > 0) {
-                supportFragmentManager.fragments.forEach { fragmentTransaction.remove(it) }
-            }
-            fragmentTransaction.commit()
+            clearBackStack()
             super.onBackPressed()
         }
     }
 
-    fun show(fragment: Fragment, addToBackStack: Boolean = false) {
+    private fun clearBackStack() {
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            val fragmentTransaction = supportFragmentManager.beginTransaction()
+            supportFragmentManager.fragments.forEach { fragmentTransaction.remove(it) }
+            fragmentTransaction.commit()
+        }
+    }
+
+    private fun show(fragment: Fragment, addToBackStack: Boolean = false) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-                .replace(R.id.contentFrame, fragment)
 
         if (addToBackStack) {
             fragmentTransaction.addToBackStack(null)
+        } else {
+            supportFragmentManager.popBackStack(null, POP_BACK_STACK_INCLUSIVE)
         }
 
+        fragmentTransaction.replace(R.id.contentFrame, fragment)
         fragmentTransaction.commit()
 
         showKeyboard(findViewById(android.R.id.content), false)
