@@ -1,5 +1,6 @@
 package com.queatz.permanentmemory.adapters
 
+import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -14,11 +15,22 @@ class SubjectAdapter constructor(
         private val onMoreClickListener: (SetModel) -> Unit,
         private val onActionClickListener: () -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    private var isInitialSetLoaded = false
+
     var items: MutableList<SetModel> = ArrayList()
         set(value) {
-            this.items.clear()
-            this.items.addAll(value)
-            notifyDataSetChanged()
+            if (!isInitialSetLoaded) {
+                items.clear()
+                items.addAll(value)
+                notifyDataSetChanged()
+                isInitialSetLoaded = true
+            }
+
+            val diffResult = DiffUtil.calculateDiff(ModelDiffCallback(items, value))
+            items.clear()
+            items.addAll(value)
+            diffResult.dispatchUpdatesTo(this)
+
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
