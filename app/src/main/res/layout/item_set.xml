@@ -43,7 +43,7 @@
             android:padding="@dimen/padHalf"
             android:minWidth="0dp"
             android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_more_vert_black_24dp"
+            android:src="@drawable/ic_settings_black_24dp"
             android:tint="@color/colorAccent"/>
 
         <TextView
