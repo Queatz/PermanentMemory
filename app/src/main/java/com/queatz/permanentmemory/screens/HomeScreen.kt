@@ -40,10 +40,8 @@ class HomeScreen : Fragment() {
         app.on(DataManager::class).box(SetModel::class).query()
                 .order(SetModel_.updated, DESCENDING)
                 .build()
-                .findFirst()
-                ?.let {
-                    subjectAdapter.items = mutableListOf(it)
-                }
+                .find()
+                .let { subjectAdapter.items = it.asSequence().take(3).toMutableList() }
 
         keepPlayingRecyclerView.adapter = subjectAdapter
 
