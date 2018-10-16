@@ -7,15 +7,13 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.app
 import com.queatz.permanentmemory.logic.DataManager
 import com.queatz.permanentmemory.models.ItemModel
 import com.queatz.permanentmemory.models.SubjectModel
 import com.queatz.permanentmemory.pool.on
+import kotlinx.android.synthetic.main.item_set_item.view.*
 
 class ItemAdapter constructor(
         private val onDeleteClickListener: (item: ItemModel) -> Unit,
@@ -32,6 +30,7 @@ class ItemAdapter constructor(
                 items.addAll(value)
                 notifyDataSetChanged()
                 isInitialSetLoaded = true
+                return
             }
 
             val diffResult = DiffUtil.calculateDiff(object : ModelDiffCallback(items, value) {
@@ -54,13 +53,14 @@ class ItemAdapter constructor(
         when (viewHolder) {
             is SetViewHolder -> {
                 val item = items[position]
-                viewHolder.deleteButton.setOnClickListener { onDeleteClickListener.invoke(items[position]) }
+                viewHolder.deleteButton.setOnClickListener { onDeleteClickListener.invoke(item) }
                 viewHolder.questionText.setText(item.question)
                 viewHolder.answerText.setText(item.answer)
                 viewHolder.questionText.hint = subject?.name
                 viewHolder.answerText.hint = subject?.inverse
                 viewHolder.questionText.addTextChangedListener(object : TextWatcher {
                     override fun afterTextChanged(text: Editable?) {
+                        if (item.question == text.toString()) return
                         item.question = text.toString()
                         app.on(DataManager::class).box(ItemModel::class).put(item)
                     }
@@ -70,6 +70,7 @@ class ItemAdapter constructor(
                 })
                 viewHolder.answerText.addTextChangedListener(object : TextWatcher {
                     override fun afterTextChanged(text: Editable?) {
+                        if (item.answer == text.toString()) return
                         item.answer = text.toString()
                         app.on(DataManager::class).box(ItemModel::class).put(item)
                     }
@@ -89,8 +90,8 @@ class ItemAdapter constructor(
 }
 
 class SetViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val percentLearnedButton = itemView.findViewById<Button>(R.id.percentLearnedButton)
-    val deleteButton = itemView.findViewById<Button>(R.id.deleteButton)
-    val questionText = itemView.findViewById<EditText>(R.id.questionText)
-    val answerText = itemView.findViewById<EditText>(R.id.answerText)
+    val percentLearnedButton = itemView.percentLearnedButton
+    val deleteButton = itemView.deleteButton
+    val questionText = itemView.questionText
+    val answerText = itemView.answerText
 }

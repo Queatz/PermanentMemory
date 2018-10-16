@@ -5,10 +5,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.models.SetModel
+import kotlinx.android.synthetic.main.item_set.view.*
 
 class SubjectAdapter constructor(
         private val onClickListener: (SetModel) -> Unit,
@@ -24,6 +23,7 @@ class SubjectAdapter constructor(
                 items.addAll(value)
                 notifyDataSetChanged()
                 isInitialSetLoaded = true
+                return
             }
 
             val diffResult = DiffUtil.calculateDiff(ModelDiffCallback(items, value))
@@ -59,7 +59,7 @@ class SubjectAdapter constructor(
 }
 
 class SubjectViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val cardView = itemView.findViewById<View>(R.id.cardView)!!
-    val moreButton = itemView.findViewById<View>(R.id.moreButton)!!
-    val setName = itemView.findViewById<TextView>(R.id.setName)!!
+    val cardView = itemView.cardView
+    val moreButton = itemView.moreButton
+    val setName = itemView.setName
 }

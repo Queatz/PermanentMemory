@@ -5,9 +5,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.models.SubjectModel
+import kotlinx.android.synthetic.main.item_subject.view.*
 
 class WorldAdapter constructor(
         private val onClickListener: (SubjectModel) -> Unit,
@@ -23,6 +23,7 @@ class WorldAdapter constructor(
                 items.addAll(value)
                 notifyDataSetChanged()
                 isInitialSetLoaded = true
+                return
             }
 
             val diffResult = DiffUtil.calculateDiff(ModelDiffCallback(items, value))
@@ -57,5 +58,5 @@ class WorldAdapter constructor(
 }
 
 class WorldViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val subjectName = itemView.findViewById<TextView>(R.id.subjectName)!!
+    val subjectName = itemView.subjectName
 }
