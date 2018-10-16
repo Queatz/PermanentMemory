@@ -14,7 +14,6 @@ import com.queatz.permanentmemory.logic.*
 import com.queatz.permanentmemory.models.SubjectModel
 import com.queatz.permanentmemory.pool.on
 import com.queatz.permanentmemory.pool.onEnd
-import com.queatz.permanentmemory.screens.SubjectScreen
 import io.objectbox.android.AndroidScheduler
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.drawer_main.*
@@ -46,8 +45,7 @@ class MainActivity : FragmentActivity() {
                 .observer { worldAdapter.items = it }
                 .addToScope(on(ScopeManager::class))
 
-        //TODO("Show last active subject or main screen")
-        show(SubjectScreen())
+        app.on(NavigationManager::class).fallback()
     }
 
     override fun onBackPressed() {

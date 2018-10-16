@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="@dimen/padDouble"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:text="@string/app_name"
+        android:textColor="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/worldOfTheDayHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        android:padding="@dimen/padDouble"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:text="@string/word_of_the_day" />
+
+
+    <TextView
+        android:id="@+id/worldOfTheDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/worldOfTheDayHeader"
+        android:padding="@dimen/padDouble"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:text="Giờ" />
+
+    <TextView
+        android:id="@+id/keepPlaying"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/worldOfTheDay"
+        android:padding="@dimen/padDouble"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:text="@string/keep_playing" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/keepPlayingRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keepPlaying"
+        android:clipChildren="false" />
+
+</android.support.constraint.ConstraintLayout>

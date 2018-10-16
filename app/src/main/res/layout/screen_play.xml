@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="@dimen/pad">
 
     <Button style="@style/Widget.AppCompat.Button.Colored"
@@ -25,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="@dimen/padDouble"
-        android:hint="English"
+        tools:hint="English"
         android:gravity="center_horizontal"
         android:textAppearance="?android:textAppearanceLarge"
         android:background="@null"
@@ -44,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Giờ"
+        tools:text="Giờ"
         android:textAppearance="?android:textAppearanceLarge"
         android:textStyle="bold" />
 

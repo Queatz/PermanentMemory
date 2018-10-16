@@ -6,17 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.queatz.permanentmemory.R
-import com.queatz.permanentmemory.models.SubjectModel
-import kotlinx.android.synthetic.main.item_subject.view.*
+import com.queatz.permanentmemory.models.SetModel
+import kotlinx.android.synthetic.main.item_set.view.*
 
-class WorldAdapter constructor(
-        private val onClickListener: (SubjectModel) -> Unit,
-        private val onActionClickListener: () -> Unit
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SubjectAdapter (
+        private val onClickListener: (SetModel) -> Unit,
+        private val onMoreClickListener: (SetModel) -> Unit,
+        private val onActionClickListener: () -> Unit,
+        var isActionVisible: Boolean = true) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var isInitialSetLoaded = false
 
-    var items: MutableList<SubjectModel> = ArrayList()
+    var items: MutableList<SetModel> = ArrayList()
         set(value) {
             if (!isInitialSetLoaded) {
                 items.clear()
@@ -30,33 +31,36 @@ class WorldAdapter constructor(
             items.clear()
             items.addAll(value)
             diffResult.dispatchUpdatesTo(this)
+
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             when (viewType) {
-                0 -> WorldViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_subject, parent, false))
+                0 -> SubjectViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_set, parent, false))
                 else -> ActionViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_action, parent, false))
             }
 
-
-    override fun getItemCount() = items.size + 1
+    override fun getItemCount() = items.size + (if (!isActionVisible) 0 else 1)
 
     override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
         when (viewHolder) {
-            is WorldViewHolder -> {
-                viewHolder.itemView.setOnClickListener { onClickListener.invoke(items[position]) }
-                viewHolder.subjectName.text = items[position].name
+            is SubjectViewHolder -> {
+                viewHolder.cardView.setOnClickListener { onClickListener.invoke(items[position]) }
+                viewHolder.moreButton.setOnClickListener { onMoreClickListener.invoke(items[position]) }
+                viewHolder.setName.text = items[position].name
             }
             is ActionViewHolder -> {
-                viewHolder.actionButton.text = viewHolder.actionButton.resources.getText(R.string.add_a_subject)
+                viewHolder.actionButton.text = viewHolder.actionButton.resources.getText(R.string.add_a_set)
                 viewHolder.actionButton.setOnClickListener { onActionClickListener.invoke() }
             }
         }
     }
 
-    override fun getItemViewType(position: Int) = when (position) { itemCount - 1 -> 1 else -> 0 }
+    override fun getItemViewType(position: Int) = if (!isActionVisible) 0 else when (position) { itemCount - 1 -> 1 else -> 0 }
 }
 
-class WorldViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val subjectName = itemView.subjectName
+class SubjectViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    val cardView = itemView.cardView
+    val moreButton = itemView.moreButton
+    val setName = itemView.setName
 }

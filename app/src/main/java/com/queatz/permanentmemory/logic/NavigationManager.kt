@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.queatz.permanentmemory.Extras
 import com.queatz.permanentmemory.pool.PoolMember
+import com.queatz.permanentmemory.screens.HomeScreen
 import com.queatz.permanentmemory.screens.PlayScreen
 import com.queatz.permanentmemory.screens.SetScreen
 import com.queatz.permanentmemory.screens.SubjectScreen
@@ -33,6 +34,6 @@ class NavigationManager : PoolMember() {
     }
 
     fun fallback() {
-        view.invoke(SubjectScreen(), false)
+        view.invoke(HomeScreen(), false)
     }
 }

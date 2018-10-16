@@ -18,4 +18,6 @@
     <string name="add_a_set">Add a set</string>
     <string name="add_an_item">Add an item</string>
     <string name="delete">Delete</string>
+    <string name="word_of_the_day">Word of the Day</string>
+    <string name="keep_playing">Keep playing!</string>
 </resources>
