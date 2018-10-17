@@ -9,7 +9,7 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import com.queatz.permanentmemory.adapters.WorldAdapter
+import com.queatz.permanentmemory.adapters.SubjectAdapter
 import com.queatz.permanentmemory.logic.*
 import com.queatz.permanentmemory.models.SubjectModel
 import com.queatz.permanentmemory.pool.on
@@ -31,7 +31,7 @@ class MainActivity : FragmentActivity() {
         menuButton.setOnClickListener { drawerLayout.openDrawer(GravityCompat.START) }
 
         worldRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        val worldAdapter = WorldAdapter({
+        val worldAdapter = SubjectAdapter({
             app.on(NavigationManager::class).showSubject(it.objectBoxId)
             drawerLayout.closeDrawer(GravityCompat.START)
         }, {

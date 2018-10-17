@@ -20,4 +20,8 @@
     <string name="delete">Delete</string>
     <string name="word_of_the_day">Word of the Day</string>
     <string name="keep_playing">Keep playing!</string>
+    <string name="not_started">Not started</string>
+    <string name="in_progress">In progress</string>
+    <string name="completed">Completed</string>
+    <string name="needs_review">Needs review</string>
 </resources>

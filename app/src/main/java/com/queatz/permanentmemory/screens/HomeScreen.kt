@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.queatz.permanentmemory.R
-import com.queatz.permanentmemory.adapters.SubjectAdapter
+import com.queatz.permanentmemory.adapters.SetAdapter
 import com.queatz.permanentmemory.app
 import com.queatz.permanentmemory.logic.DataManager
 import com.queatz.permanentmemory.logic.NavigationManager
@@ -30,7 +30,7 @@ class HomeScreen : Fragment() {
         keepPlayingRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         keepPlayingRecyclerView.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
-        val subjectAdapter = SubjectAdapter(
+        val subjectAdapter = SetAdapter(
                 { app.on(NavigationManager::class).playSet(it.objectBoxId) },
                 { app.on(NavigationManager::class).editSet(it.objectBoxId) },
                 {}

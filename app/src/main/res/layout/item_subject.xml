@@ -18,14 +18,13 @@
         android:textAppearance="?android:textAppearanceLarge" />
 
     <ProgressBar
-        android:id="@+id/setProgress"
+        android:id="@+id/subjectProgress"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/pad"
         android:layout_marginEnd="@dimen/pad"
         android:indeterminate="false"
-        android:progress="25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

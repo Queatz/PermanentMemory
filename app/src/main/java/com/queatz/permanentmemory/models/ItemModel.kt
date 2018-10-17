@@ -7,5 +7,6 @@ data class ItemModel(
         var set: Long = 0,
         var score: Long = 0,
         var question: String = "",
-        var answer: String = ""
+        var answer: String = "",
+        var streak: Long = 0
 ) : BaseModel()

@@ -50,7 +50,7 @@ class SetScreen : Fragment() {
         itemAdapter = ItemAdapter({
             app.on(DataManager::class).box(ItemModel::class).remove(it.objectBoxId)
         }, {
-            app.on(DataManager::class).box(ItemModel::class).put(ItemModel(set = set.objectBoxId))
+            app.on(DataManager::class).box(ItemModel::class).put(ItemModel(set = set.objectBoxId, streak = 0))
         })
 
         setRecyclerView.adapter = itemAdapter

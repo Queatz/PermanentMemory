@@ -52,10 +52,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/pad"
             app:layout_constraintTop_toTopOf="@id/setName"
+            app:layout_constraintVertical_bias=".66"
             app:layout_constraintBottom_toBottomOf="@id/setName"
             app:layout_constraintStart_toEndOf="@id/setName"
-            android:text="(In Progress)"
-            android:textAppearance="?android:textAppearanceMedium"
+            tools:text="In Progress"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textAppearance="?android:textAppearanceSmall"
             android:textColor="@color/colorAccent"/>
 
         <ProgressBar
@@ -68,7 +71,6 @@
             android:layout_marginStart="@dimen/padDouble"
             android:layout_marginEnd="@dimen/padDouble"
             android:indeterminate="false"
-            android:progress="25"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

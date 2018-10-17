@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.queatz.permanentmemory.Extras
 import com.queatz.permanentmemory.R
-import com.queatz.permanentmemory.adapters.SubjectAdapter
+import com.queatz.permanentmemory.adapters.SetAdapter
 import com.queatz.permanentmemory.app
 import com.queatz.permanentmemory.logic.*
 import com.queatz.permanentmemory.models.SetModel
@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.screen_subject.*
 class SubjectScreen : Fragment() {
 
     private lateinit var subject: SubjectModel
-    private lateinit var subjectAdapter: SubjectAdapter
+    private lateinit var setAdapter: SetAdapter
     private var setsSubscription: DataSubscription? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
@@ -47,7 +47,7 @@ class SubjectScreen : Fragment() {
 
         setRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        subjectAdapter = SubjectAdapter(
+        setAdapter = SetAdapter(
                 { app.on(NavigationManager::class).playSet(it.objectBoxId) },
                 { app.on(NavigationManager::class).editSet(it.objectBoxId) },
                 {
@@ -55,7 +55,7 @@ class SubjectScreen : Fragment() {
                 }
         )
 
-        setRecyclerView.adapter = subjectAdapter
+        setRecyclerView.adapter = setAdapter
 
         moreButton.setOnClickListener {
             app.on(EditorManager::class).renameSubject(subject)
@@ -72,7 +72,7 @@ class SubjectScreen : Fragment() {
                 .build()
                 .subscribe()
                 .on(AndroidScheduler.mainThread())
-                .observer { subjectAdapter.items = it }
+                .observer { setAdapter.items = it }
                 .addToScope(on(ScopeManager::class))
     }
 
