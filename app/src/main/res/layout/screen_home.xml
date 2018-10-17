@@ -8,7 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView"
         android:padding="@dimen/padDouble"
         android:gravity="center_horizontal"
         android:textAppearance="?android:textAppearanceMedium"

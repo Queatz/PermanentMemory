@@ -1,0 +1,34 @@
+[ ] null states ( add a set / this is what a set is)
+	[ ] drawer -> no subjects
+	[ ] no sets
+
+[ ] settings slide
+	[ ] streak length
+	[ ] days to wait after completeing a set to refresh memory
+	[ ] tips
+	[ ] learning mode (random, normal, reversed)
+	[ ] dark mode
+	[ ] download all/upload all -> permanent_memory_all_subjects.json
+
+[ ] send feedback button in drawer
+
+[ ] undo delete
+
+[ ] correct / incorrect animation
+
+[ ] word of the day
+
+[ ] progress history screen
+[ ] %learned text on edit set items screen
+
+[ ] track actual progress bars | (add_each_words_streak * word_count) / streak_target_length
+	[ ] text: in progress, needs review, not started, complete
+	[ ] subject overall progress (all sets)
+
+[ ] Google Play page - $1.69
+[ ] icon
+[ ] feature
+[ ] screenshots (4+)
+[ ] upload
+
+[ ] Sample set (vietnamese numbers)

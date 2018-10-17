@@ -41,6 +41,8 @@ class PlayScreen : Fragment() {
     }
 
     private fun next() {
+        if (items.isEmpty()) return
+
         item = items[Random().nextInt(items.size)]
 
         answerText.setText("")

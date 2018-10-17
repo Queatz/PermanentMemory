@@ -46,6 +46,11 @@ class MainActivity : FragmentActivity() {
                 .addToScope(on(ScopeManager::class))
 
         app.on(NavigationManager::class).fallback()
+
+        drawerTitle.setOnClickListener {
+            app.on(NavigationManager::class).fallback()
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }
     }
 
     override fun onBackPressed() {

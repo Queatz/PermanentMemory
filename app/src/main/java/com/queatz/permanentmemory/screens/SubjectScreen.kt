@@ -38,8 +38,8 @@ class SubjectScreen : Fragment() {
                 .subscribe()
                 .on(AndroidScheduler.mainThread())
                 .observer {
-                    it[0]?.let {
-                        subject = it
+                    if (it.isNotEmpty()) {
+                        subject = it[0]
                         update()
                     }
                 }
@@ -63,6 +63,8 @@ class SubjectScreen : Fragment() {
     }
 
     private fun update() {
+        view ?: return
+
         subjectName.text = subject.name
         on(ScopeManager::class).clear(setsSubscription)
         setsSubscription = app.on(DataManager::class).box(SetModel::class).query()
