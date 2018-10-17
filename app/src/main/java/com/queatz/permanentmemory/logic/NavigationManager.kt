@@ -3,6 +3,8 @@ package com.queatz.permanentmemory.logic
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.queatz.permanentmemory.Extras
+import com.queatz.permanentmemory.models.ItemModel
+import com.queatz.permanentmemory.models.ItemModel_
 import com.queatz.permanentmemory.pool.PoolMember
 import com.queatz.permanentmemory.screens.HomeScreen
 import com.queatz.permanentmemory.screens.PlayScreen
@@ -27,6 +29,16 @@ class NavigationManager : PoolMember() {
     }
 
     fun playSet(id: Long) {
+        val itemCount = on(DataManager::class).box(ItemModel::class).query()
+                .equal(ItemModel_.set, id)
+                .build()
+                .count()
+
+        if (itemCount < 1) {
+            editSet(id)
+            return
+        }
+
         val screen = PlayScreen()
         screen.arguments = Bundle()
         screen.arguments!!.putLong(Extras.ID, id)

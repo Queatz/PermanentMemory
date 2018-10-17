@@ -19,11 +19,14 @@
     <string name="add_an_item">Add an item</string>
     <string name="delete">Delete</string>
     <string name="word_of_the_day">Word of the Day</string>
-    <string name="keep_playing">Keep playing!</string>
+    <string name="keep_playing">Keep playing</string>
     <string name="not_started">Not started</string>
     <string name="in_progress">In progress</string>
     <string name="completed">Completed</string>
     <string name="needs_review">Needs review</string>
     <string name="percent_learned">%1$s%% learned</string>
     <string name="send_feedback">Send feedback</string>
+    <string name="return_to_home">Return to home</string>
+    <string name="learning_complete">Learning complete!</string>
+    <string name="learning_complete_message">You\'ve successfully learned everything in this set!</string>
 </resources>

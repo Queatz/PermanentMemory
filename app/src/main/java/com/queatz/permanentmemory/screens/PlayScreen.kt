@@ -1,5 +1,7 @@
 package com.queatz.permanentmemory.screens
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +10,10 @@ import android.view.ViewGroup
 import com.queatz.permanentmemory.Extras
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.app
+import com.queatz.permanentmemory.logic.ContextManager
 import com.queatz.permanentmemory.logic.DataManager
+import com.queatz.permanentmemory.logic.NavigationManager
+import com.queatz.permanentmemory.logic.ProgressManager
 import com.queatz.permanentmemory.models.*
 import com.queatz.permanentmemory.pool.on
 import com.queatz.permanentmemory.pool.onEnd
@@ -22,6 +27,7 @@ class PlayScreen : Fragment() {
     private lateinit var items: List<ItemModel>
     private lateinit var item: ItemModel
     private var isInverse = false
+    private var isAlreadyLearned = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.screen_play, container, false)
@@ -36,6 +42,8 @@ class PlayScreen : Fragment() {
         submitButton.setOnClickListener {
             submitAnswer(item, answerText.text.toString())
         }
+
+        isAlreadyLearned = app.on(ProgressManager::class).getProgress(set) >= 100
 
         next()
     }
@@ -57,6 +65,17 @@ class PlayScreen : Fragment() {
         app.on(DataManager::class).box(SetModel::class).put(set)
         app.on(DataManager::class).box(SubjectModel::class).put(subject)
 
+        if (!isAlreadyLearned && app.on(ProgressManager::class).getProgress(set) >= 100) {
+            AlertDialog.Builder(app.on(ContextManager::class).context)
+                    .setTitle(R.string.learning_complete)
+                    .setMessage(R.string.learning_complete_message)
+                    .setPositiveButton(R.string.keep_playing) { _: DialogInterface, _: Int -> }
+                    .setNegativeButton(R.string.return_to_home) { _: DialogInterface, _: Int ->
+                        app.on(NavigationManager::class).fallback()
+                    }
+                    .show()
+        }
+
         next()
     }
 
@@ -67,6 +86,7 @@ class PlayScreen : Fragment() {
         item = items[Random().nextInt(items.size)]
 
         answerText.setText("")
+        answerText.requestFocus()
 
         isInverse = Random().nextInt(2) == 0
         if (isInverse) {

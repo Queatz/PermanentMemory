@@ -25,9 +25,6 @@ TODO
 [ ] progress history screen per set+subject
 	[ ] Vert menu (Progress, Edit)
 
-[ ] Don't allow playing sets with no words (No words yet!)
-[ ] undo delete
-[ ] once set is complete, alert them when playing1
 [ ] correct / incorrect animation
 
 [ ] Preload sample set (vietnamese numbers)
@@ -40,6 +37,10 @@ TODO
 
 DONE
 ====
+
+[x] once set is complete, alert them when playing1
+
+[x] Don't allow playing sets with no words (No words yet!)
 
 [X] send feedback button in drawer
 
