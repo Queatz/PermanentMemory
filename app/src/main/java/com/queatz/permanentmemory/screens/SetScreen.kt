@@ -20,6 +20,7 @@ import com.queatz.permanentmemory.pool.onEnd
 import io.objectbox.android.AndroidScheduler
 import io.objectbox.reactive.DataSubscription
 import kotlinx.android.synthetic.main.screen_set.*
+import java.util.*
 
 class SetScreen : Fragment() {
 
@@ -51,6 +52,16 @@ class SetScreen : Fragment() {
             app.on(DataManager::class).box(ItemModel::class).remove(it.objectBoxId)
         }, {
             app.on(DataManager::class).box(ItemModel::class).put(ItemModel(set = set.objectBoxId, streak = 0))
+
+            val subject = app.on(DataManager::class).box(SubjectModel::class).get(set.subject)
+
+            subject?.let {
+                it.updated = Date()
+                app.on(DataManager::class).box(SubjectModel::class).put(it)
+            }
+
+            set.updated = Date()
+            app.on(DataManager::class).box(SetModel::class).put(set)
         })
 
         setRecyclerView.adapter = itemAdapter

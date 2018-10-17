@@ -1,6 +1,6 @@
 package com.queatz.permanentmemory.adapters
 
-import android.support.constraint.ConstraintLayout
+import android.graphics.PorterDuff
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -69,14 +69,17 @@ class SetAdapter(
                     progress == 0 -> {
                         viewHolder.setStatus.setText(R.string.not_started)
                         viewHolder.setStatus.setTextColor(viewHolder.setStatus.resources.getColor(R.color.colorPrimary))
+                        viewHolder.setProgress.progressDrawable.colorFilter = null
                     }
                     progress < 100 -> {
                         viewHolder.setStatus.setText(R.string.in_progress)
                         viewHolder.setStatus.setTextColor(viewHolder.setStatus.resources.getColor(R.color.colorAccent))
+                        viewHolder.setProgress.progressDrawable.colorFilter = null
                     }
                     else -> {
                         viewHolder.setStatus.setText(R.string.completed)
                         viewHolder.setStatus.setTextColor(viewHolder.setStatus.resources.getColor(R.color.green))
+                        viewHolder.setProgress.progressDrawable.setColorFilter(viewHolder.setStatus.resources.getColor(R.color.green), PorterDuff.Mode.MULTIPLY)
                     }
                 }
             }
