@@ -21,9 +21,9 @@
 [ ] progress history screen
 [ ] %learned text on edit set items screen
 
-[ ] track actual progress bars | (add_each_words_streak * word_count) / streak_target_length
-	[ ] text: in progress, needs review, not started, complete
-	[ ] subject overall progress (all sets)
+[x] track actual progress bars | (add_each_words_streak * word_count) / streak_target_length
+	[x] text: in progress, needs review, not started, complete
+	[x] subject overall progress (all sets)
 
 [ ] Google Play page - $1.69
 [ ] icon

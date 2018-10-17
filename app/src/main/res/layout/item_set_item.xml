@@ -24,7 +24,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padDouble"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/submitButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:padding="@dimen/pad"
@@ -39,17 +38,17 @@
                 android:id="@+id/answerText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/padDouble"
-                app:layout_constraintTop_toBottomOf="@+id/questionText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:padding="@dimen/pad"
-                tools:hint="Tiếng Việt"
-                android:gravity="center_horizontal"
-                android:textAppearance="?android:textAppearanceLarge"
+                app:layout_constraintTop_toBottomOf="@+id/questionText"
                 android:background="@null"
+                android:gravity="center_horizontal"
                 android:importantForAutofill="no"
-                android:inputType="textCapSentences" />
+                android:inputType="textCapSentences"
+                android:padding="@dimen/pad"
+                android:textAppearance="?android:textAppearanceLarge"
+                tools:hint="Tiếng Việt"
+                tools:layout_editor_absoluteY="78dp" />
 
             <Button style="@style/Widget.AppCompat.Button.Borderless"
                 android:id="@+id/percentLearnedButton"
@@ -58,7 +57,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/answerText"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="55% learned"
+                tools:text="55% learned"
                 android:textColor="@color/colorAccent"/>
 
             <Button style="@style/Widget.AppCompat.Button.Borderless"

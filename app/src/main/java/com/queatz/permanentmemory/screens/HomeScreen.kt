@@ -33,7 +33,8 @@ class HomeScreen : Fragment() {
         val subjectAdapter = SetAdapter(
                 { app.on(NavigationManager::class).playSet(it.objectBoxId) },
                 { app.on(NavigationManager::class).editSet(it.objectBoxId) },
-                {}
+                {},
+                showSubjectName = true
         )
         subjectAdapter.isActionVisible = false
 

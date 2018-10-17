@@ -24,4 +24,5 @@
     <string name="in_progress">In progress</string>
     <string name="completed">Completed</string>
     <string name="needs_review">Needs review</string>
+    <string name="percent_learned">%1$s%% learned</string>
 </resources>

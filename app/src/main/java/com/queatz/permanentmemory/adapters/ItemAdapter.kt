@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.app
 import com.queatz.permanentmemory.logic.DataManager
+import com.queatz.permanentmemory.logic.ProgressManager
 import com.queatz.permanentmemory.models.ItemModel
 import com.queatz.permanentmemory.models.SubjectModel
 import com.queatz.permanentmemory.pool.on
@@ -53,6 +54,8 @@ class ItemAdapter constructor(
         when (viewHolder) {
             is SetViewHolder -> {
                 val item = items[position]
+                viewHolder.percentLearnedButton.text = viewHolder.itemView.resources.getString(
+                        R.string.percent_learned, app.on(ProgressManager::class).getProgress(item).toString())
                 viewHolder.deleteButton.setOnClickListener { onDeleteClickListener.invoke(item) }
                 viewHolder.questionText.setText(item.question)
                 viewHolder.answerText.setText(item.answer)
