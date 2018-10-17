@@ -1,6 +1,13 @@
+
+TODO
+====
+
 [ ] null states ( add a set / this is what a set is)
 	[ ] drawer -> no subjects
+	[ ] no items
 	[ ] no sets
+	[ ] Word of the day
+	[ ] Keep playing
 
 [ ] settings slide
 	[ ] streak length
@@ -8,27 +15,37 @@
 	[ ] tips
 	[ ] learning mode (random, normal, reversed)
 	[ ] dark mode
-	[ ] download all/upload all -> permanent_memory_all_subjects.json
-
-[ ] send feedback button in drawer
-
-[ ] undo delete
-
-[ ] correct / incorrect animation
+	[ ] download all/upload all ->
+		permanent_memory_all_subjects.json
 
 [ ] word of the day
+	[ ] Pick a word between 20% and 90% learned
+	[ ] Word changes at midnight
 
-[ ] progress history screen
-[ ] %learned text on edit set items screen
+[ ] progress history screen per set+subject
+	[ ] Vert menu (Progress, Edit)
+
+[ ] Don't allow playing sets with no words (No words yet!)
+[ ] undo delete
+[ ] once set is complete, alert them when playing1
+[ ] correct / incorrect animation
+
+[ ] Preload sample set (vietnamese numbers)
+
+[ ] Google Play page - $1.69
+	[ ] icon
+	[ ] feature
+	[ ] screenshots (4+)
+	[ ] upload
+
+DONE
+====
+
+[X] send feedback button in drawer
+
+[x] %learned text on edit set items screen
 
 [x] track actual progress bars | (add_each_words_streak * word_count) / streak_target_length
 	[x] text: in progress, needs review, not started, complete
 	[x] subject overall progress (all sets)
 
-[ ] Google Play page - $1.69
-[ ] icon
-[ ] feature
-[ ] screenshots (4+)
-[ ] upload
-
-[ ] Sample set (vietnamese numbers)

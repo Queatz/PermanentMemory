@@ -51,6 +51,8 @@ class MainActivity : FragmentActivity() {
             app.on(NavigationManager::class).fallback()
             drawerLayout.closeDrawer(GravityCompat.START)
         }
+
+        sendFeedbackButton.setOnClickListener { app.on(EmailManager::class).sendFeedback() }
     }
 
     override fun onBackPressed() {

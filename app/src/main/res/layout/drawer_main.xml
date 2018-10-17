@@ -25,7 +25,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/drawerTitle"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/sendFeedbackButton"
         android:clipChildren="false" />
+
+    <TextView
+        android:id="@+id/sendFeedbackButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padDouble"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="@dimen/padDouble"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:background="?selectableItemBackground"
+        android:text="@string/send_feedback"
+        android:textColor="@color/blue" />
 
 </android.support.constraint.ConstraintLayout>

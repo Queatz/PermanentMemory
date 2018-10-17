@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    android:layout_width="match_parent"
+<ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,8 +31,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleTextView"
             android:padding="@dimen/padDouble"
+            android:textStyle="bold"
+            android:textAllCaps="true"
             android:gravity="center_horizontal"
-            android:textAppearance="?android:textAppearanceMedium"
+            android:textAppearance="?android:textAppearanceSmall"
             android:text="@string/word_of_the_day" />
 
 
@@ -46,7 +48,7 @@
             android:padding="@dimen/padDouble"
             android:gravity="center_horizontal"
             android:textAppearance="?android:textAppearanceLarge"
-            android:text="Giờ" />
+            tools:text="Giờ" />
 
         <TextView
             android:id="@+id/keepPlaying"
@@ -56,8 +58,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/worldOfTheDay"
             android:padding="@dimen/padDouble"
+            android:textStyle="bold"
+            android:textAllCaps="true"
             android:gravity="center_horizontal"
-            android:textAppearance="?android:textAppearanceMedium"
+            android:textAppearance="?android:textAppearanceSmall"
             android:text="@string/keep_playing" />
 
         <android.support.v7.widget.RecyclerView

@@ -35,13 +35,14 @@ class PlayScreen : Fragment() {
 
         submitButton.setOnClickListener {
             submitAnswer(item, answerText.text.toString())
-            next()
         }
 
         next()
     }
 
     private fun submitAnswer(item: ItemModel, answer: String) {
+        if (answerText.text.isEmpty()) return
+
         val brainSample = BrainSampleModel()
         brainSample.set = item.set
         brainSample.item = item.objectBoxId
@@ -55,6 +56,8 @@ class PlayScreen : Fragment() {
         subject.updated = Date()
         app.on(DataManager::class).box(SetModel::class).put(set)
         app.on(DataManager::class).box(SubjectModel::class).put(subject)
+
+        next()
     }
 
 

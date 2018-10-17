@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF5722</color>
     <color name="green">#8BC34A</color>
     <color name="purple">#9C27B0</color>
+    <color name="blue">#03A9F4</color>
     <color name="windowBackground">#EEEEEE</color>
     <color name="white">#FFFFFF</color>
 </resources>

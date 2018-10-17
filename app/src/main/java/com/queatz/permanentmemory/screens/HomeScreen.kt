@@ -11,6 +11,7 @@ import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.adapters.SetAdapter
 import com.queatz.permanentmemory.app
 import com.queatz.permanentmemory.logic.DataManager
+import com.queatz.permanentmemory.logic.EmailManager
 import com.queatz.permanentmemory.logic.NavigationManager
 import com.queatz.permanentmemory.models.ItemModel
 import com.queatz.permanentmemory.models.ItemModel_
@@ -19,6 +20,7 @@ import com.queatz.permanentmemory.models.SetModel_
 import com.queatz.permanentmemory.pool.on
 import com.queatz.permanentmemory.pool.onEnd
 import io.objectbox.query.OrderFlags.DESCENDING
+import kotlinx.android.synthetic.main.drawer_main.*
 import kotlinx.android.synthetic.main.screen_home.*
 
 class HomeScreen : Fragment() {
