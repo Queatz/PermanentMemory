@@ -1,0 +1,146 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:4167144923741870305",
+      "lastPropertyId": "6:3160984268141125351",
+      "name": "BrainSampleModel",
+      "properties": [
+        {
+          "id": "1:3377157930156101867",
+          "name": "objectBoxId"
+        },
+        {
+          "id": "2:6583215544763869354",
+          "name": "created"
+        },
+        {
+          "id": "3:5944665784629801501",
+          "name": "updated"
+        },
+        {
+          "id": "4:4914731967112598555",
+          "name": "set"
+        },
+        {
+          "id": "5:4169596340435231102",
+          "name": "item"
+        },
+        {
+          "id": "6:3160984268141125351",
+          "name": "correct"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:2044507863027316392",
+      "lastPropertyId": "5:3503380802828177742",
+      "name": "SubjectModel",
+      "properties": [
+        {
+          "id": "1:3374085334042694765",
+          "name": "objectBoxId"
+        },
+        {
+          "id": "2:931160132086185123",
+          "name": "created"
+        },
+        {
+          "id": "3:2673726024184068625",
+          "name": "updated"
+        },
+        {
+          "id": "4:4281190442261117767",
+          "name": "name"
+        },
+        {
+          "id": "5:3503380802828177742",
+          "name": "inverse"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:1827175600699943126",
+      "lastPropertyId": "8:3809335264576296701",
+      "name": "ItemModel",
+      "properties": [
+        {
+          "id": "1:5459682145902306710",
+          "name": "objectBoxId"
+        },
+        {
+          "id": "2:6068561199506744947",
+          "name": "created"
+        },
+        {
+          "id": "3:2341938304410764026",
+          "name": "updated"
+        },
+        {
+          "id": "4:3289668337832561774",
+          "name": "set"
+        },
+        {
+          "id": "5:228852724872057124",
+          "name": "score"
+        },
+        {
+          "id": "6:2072494835892130719",
+          "name": "question"
+        },
+        {
+          "id": "7:6103274012473249043",
+          "name": "answer"
+        },
+        {
+          "id": "8:3809335264576296701",
+          "name": "streak"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:8477188787154047152",
+      "lastPropertyId": "5:5210147441287588862",
+      "name": "SetModel",
+      "properties": [
+        {
+          "id": "1:329164642044938584",
+          "name": "objectBoxId"
+        },
+        {
+          "id": "2:6290294301310612323",
+          "name": "created"
+        },
+        {
+          "id": "3:8019871101005425477",
+          "name": "updated"
+        },
+        {
+          "id": "4:1431412606382716278",
+          "name": "name"
+        },
+        {
+          "id": "5:5210147441287588862",
+          "name": "subject"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "4:8477188787154047152",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
