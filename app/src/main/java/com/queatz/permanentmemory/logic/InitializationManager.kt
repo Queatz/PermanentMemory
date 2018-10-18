@@ -18,7 +18,7 @@ class InitializationManager : PoolMember() {
             set.objectBoxId = app.on(DataManager::class).box(SetModel::class).put(set)
 
             val items = arrayListOf(
-                    ItemModel(set = set.objectBoxId, question = "Một ", answer = "One"),
+                    ItemModel(set = set.objectBoxId, question = "Một", answer = "One"),
                     ItemModel(set = set.objectBoxId, question = "Hai", answer = "Two"),
                     ItemModel(set = set.objectBoxId, question = "Ba", answer = "Three"),
                     ItemModel(set = set.objectBoxId, question = "Bốn", answer = "Four"),

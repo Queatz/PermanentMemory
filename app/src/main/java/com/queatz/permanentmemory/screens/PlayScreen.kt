@@ -87,7 +87,7 @@ class PlayScreen : Fragment() {
         val brainSample = BrainSampleModel()
         brainSample.set = item.set
         brainSample.item = item.objectBoxId
-        brainSample.correct = when (isInverse) { true -> item.question false -> item.answer } == answer
+        brainSample.correct = when (isInverse) { true -> item.question false -> item.answer }.toLowerCase() == answer.toLowerCase()
         app.on(DataManager::class).box(BrainSampleModel::class).put(brainSample)
 
         item.streak = when (brainSample.correct) { true -> item.streak + 1 false -> 0 }

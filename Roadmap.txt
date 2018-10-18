@@ -26,18 +26,18 @@ TODO
 [ ] progress history screen per set+subject
 	[ ] Vert menu (Progress, Edit, Archive)
 
-[ ] Google Play page - $1.69
-	[ ] icon
-	[ ] feature
-	[ ] screenshots (4+)
-	[ ] upload
-
 ENHANCE
 ====
 
 
 DONE
 ====
+
+[x] Google Play page - $1.69
+	[x] icon
+	[x] feature
+	[x] screenshots (4+)
+	[x] upload
 
 [x] Preload sample set (vietnamese numbers)
 
