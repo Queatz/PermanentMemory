@@ -4,9 +4,11 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import com.queatz.permanentmemory.Extras
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.app
@@ -39,14 +41,47 @@ class PlayScreen : Fragment() {
         subject = app.on(DataManager::class).box(SubjectModel::class).get(set.subject) ?: return
         items = app.on(DataManager::class).box(ItemModel::class).find(ItemModel_.set, id)
 
-        submitButton.setOnClickListener {
-            submitAnswer(item, answerText.text.toString())
+        submitButton.setOnClickListener { submitAnswer() }
+
+        answerText.setOnEditorActionListener { _, actionId, _ ->
+            when (actionId) {
+                EditorInfo.IME_ACTION_DONE -> {
+                    submitAnswer()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        answerText.setOnKeyListener { _, keyCode, event ->
+            when (event.action) {
+                KeyEvent.ACTION_UP -> {
+                    when (keyCode) {
+                        KeyEvent.KEYCODE_ENTER -> {
+                            submitAnswer()
+                            return@setOnKeyListener true
+                        }
+                    }
+                }
+            }
+
+            false
         }
 
         isAlreadyLearned = app.on(ProgressManager::class).getProgress(set) >= 100
 
         next()
     }
+
+    private fun submitAnswer() {
+        if (isShowingIncorrectAnswer) {
+            next()
+        } else {
+            submitAnswer(item, answerText.text.toString())
+        }
+    }
+
+    private var isShowingIncorrectAnswer = false
 
     private fun submitAnswer(item: ItemModel, answer: String) {
         if (answerText.text.isEmpty()) return
@@ -79,16 +114,23 @@ class PlayScreen : Fragment() {
         if (brainSample.correct) {
             correctIndicator.visibility = View.VISIBLE
             correctIndicator.postDelayed({ correctIndicator.visibility = View.GONE }, 500)
+            next()
         } else {
+            answerText.setText(when (isInverse) { true -> item.question false -> item.answer })
+            answerText.selectAll()
+            submitButton.setText(R.string.continue_text)
             incorrectIndicator.visibility = View.VISIBLE
-            incorrectIndicator.postDelayed({ incorrectIndicator.visibility = View.GONE }, 500)
+            isShowingIncorrectAnswer = true
         }
-
-        next()
     }
 
-
     private fun next() {
+        if (isShowingIncorrectAnswer) {
+            isShowingIncorrectAnswer = false
+            incorrectIndicator.visibility = View.GONE
+            submitButton.setText(R.string.submit)
+        }
+
         if (items.isEmpty()) return
 
         item = items[Random().nextInt(items.size)]
@@ -104,7 +146,6 @@ class PlayScreen : Fragment() {
             questionText.text = item.question
             answerText.hint = subject.inverse
         }
-
     }
 
     override fun onDestroy() {
