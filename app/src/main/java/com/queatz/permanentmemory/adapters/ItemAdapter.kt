@@ -61,17 +61,8 @@ class ItemAdapter constructor(
                 viewHolder.answerText.setText(item.answer)
                 viewHolder.questionText.hint = subject?.name
                 viewHolder.answerText.hint = subject?.inverse
-                viewHolder.questionText.addTextChangedListener(object : TextWatcher {
-                    override fun afterTextChanged(text: Editable?) {
-                        if (item.question == text.toString()) return
-                        item.question = text.toString()
-                        app.on(DataManager::class).box(ItemModel::class).put(item)
-                    }
 
-                    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-                    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-                })
-                viewHolder.answerText.addTextChangedListener(object : TextWatcher {
+                viewHolder.answerTextWatcher = object : TextWatcher {
                     override fun afterTextChanged(text: Editable?) {
                         if (item.answer == text.toString()) return
                         item.answer = text.toString()
@@ -80,11 +71,34 @@ class ItemAdapter constructor(
 
                     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
                     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-                })
+                }
+
+                viewHolder.questionTextWatcher = object : TextWatcher {
+                    override fun afterTextChanged(text: Editable?) {
+                        if (item.question == text.toString()) return
+                        item.question = text.toString()
+                        app.on(DataManager::class).box(ItemModel::class).put(item)
+                    }
+
+                    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                }
+
+                viewHolder.questionText.addTextChangedListener(viewHolder.questionTextWatcher)
+                viewHolder.answerText.addTextChangedListener(viewHolder.answerTextWatcher)
             }
             is ActionViewHolder -> {
                 viewHolder.actionButton.text = viewHolder.actionButton.resources.getText(R.string.add_an_item)
                 viewHolder.actionButton.setOnClickListener { onActionClickListener.invoke() }
+            }
+        }
+    }
+
+    override fun onViewRecycled(viewHolder: RecyclerView.ViewHolder) {
+        when (viewHolder) {
+            is SetViewHolder -> {
+                viewHolder.answerText.removeTextChangedListener(viewHolder.answerTextWatcher)
+                viewHolder.questionText.removeTextChangedListener(viewHolder.questionTextWatcher)
             }
         }
     }
@@ -97,4 +111,6 @@ class SetViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemVi
     val deleteButton = itemView.deleteButton
     val questionText = itemView.questionText
     val answerText = itemView.answerText
+    lateinit var answerTextWatcher: TextWatcher
+    lateinit var questionTextWatcher: TextWatcher
 }

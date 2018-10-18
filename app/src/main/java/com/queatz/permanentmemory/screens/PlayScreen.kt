@@ -76,6 +76,14 @@ class PlayScreen : Fragment() {
                     .show()
         }
 
+        if (brainSample.correct) {
+            correctIndicator.visibility = View.VISIBLE
+            correctIndicator.postDelayed({ correctIndicator.visibility = View.GONE }, 500)
+        } else {
+            incorrectIndicator.visibility = View.VISIBLE
+            incorrectIndicator.postDelayed({ incorrectIndicator.visibility = View.GONE }, 500)
+        }
+
         next()
     }
 

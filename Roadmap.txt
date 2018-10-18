@@ -25,8 +25,6 @@ TODO
 [ ] progress history screen per set+subject
 	[ ] Vert menu (Progress, Edit)
 
-[ ] correct / incorrect animation
-
 [ ] Preload sample set (vietnamese numbers)
 
 [ ] Google Play page - $1.69
@@ -37,6 +35,8 @@ TODO
 
 DONE
 ====
+
+[x] correct / incorrect animation
 
 [x] once set is complete, alert them when playing1
 
