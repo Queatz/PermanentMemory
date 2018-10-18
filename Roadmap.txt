@@ -11,6 +11,7 @@ TODO
 
 [ ] settings slide
 	[ ] streak length
+	[ ] penalty points
 	[ ] days to wait after completeing a set to refresh memory
 	[ ] tips
 	[ ] learning mode (random, normal, reversed)
@@ -23,9 +24,7 @@ TODO
 	[ ] Word changes at midnight
 
 [ ] progress history screen per set+subject
-	[ ] Vert menu (Progress, Edit)
-
-[ ] Preload sample set (vietnamese numbers)
+	[ ] Vert menu (Progress, Edit, Archive)
 
 [ ] Google Play page - $1.69
 	[ ] icon
@@ -33,8 +32,14 @@ TODO
 	[ ] screenshots (4+)
 	[ ] upload
 
+ENHANCE
+====
+
+
 DONE
 ====
+
+[x] Preload sample set (vietnamese numbers)
 
 [x] correct / incorrect animation
 
