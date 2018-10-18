@@ -1,21 +1,22 @@
 package com.queatz.permanentmemory.logic
 
-import com.queatz.permanentmemory.app
 import com.queatz.permanentmemory.models.ItemModel
+import com.queatz.permanentmemory.models.ItemModel_
 import com.queatz.permanentmemory.models.SetModel
 import com.queatz.permanentmemory.models.SubjectModel
 import com.queatz.permanentmemory.pool.PoolMember
-import com.queatz.permanentmemory.pool.on
+import java.util.*
 
 class InitializationManager : PoolMember() {
     fun initialize() {
-        val settings = app.on(SettingsManager::class).get()
+        val settings = on(SettingsManager::class).get()
+
         if (!settings.isInitialSubjectLoaded) {
             val subject = SubjectModel("Tiếng Việt", "English")
-            subject.objectBoxId = app.on(DataManager::class).box(SubjectModel::class).put(subject)
+            subject.objectBoxId = on(DataManager::class).box(SubjectModel::class).put(subject)
 
             val set = SetModel("Numbers", subject.objectBoxId)
-            set.objectBoxId = app.on(DataManager::class).box(SetModel::class).put(set)
+            set.objectBoxId = on(DataManager::class).box(SetModel::class).put(set)
 
             val items = arrayListOf(
                     ItemModel(set = set.objectBoxId, question = "Một", answer = "One"),
@@ -44,10 +45,32 @@ class InitializationManager : PoolMember() {
                     ItemModel(set = set.objectBoxId, question = "Một triệu", answer = "One million")
             )
 
-            app.on(DataManager::class).box(ItemModel::class).put(items)
+            on(DataManager::class).box(ItemModel::class).put(items)
 
             settings.isInitialSubjectLoaded = true
-            app.on(SettingsManager::class).save(settings)
+
+            on(SettingsManager::class).save(settings)
         }
+
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+
+        if (settings.wordOfTheDayDate?.before(calendar.time) != false) {
+            settings.wordOfTheDayDate = calendar.time
+            settings.wordOfTheDay = findWordOfTheDay()
+            on(SettingsManager::class).save(settings)
+        }
+
     }
+
+    private fun findWordOfTheDay() = on(DataManager::class).box(ItemModel::class).query()
+            .less(ItemModel_.streak, 10)
+            .notEqual(ItemModel_.question, "")
+            .build()
+            .find()
+            .randomOrNull()?.objectBoxId
 }
+

@@ -11,16 +11,15 @@ import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.adapters.SetAdapter
 import com.queatz.permanentmemory.app
 import com.queatz.permanentmemory.logic.DataManager
-import com.queatz.permanentmemory.logic.EmailManager
 import com.queatz.permanentmemory.logic.NavigationManager
+import com.queatz.permanentmemory.logic.ProgressManager
+import com.queatz.permanentmemory.logic.SettingsManager
 import com.queatz.permanentmemory.models.ItemModel
-import com.queatz.permanentmemory.models.ItemModel_
 import com.queatz.permanentmemory.models.SetModel
 import com.queatz.permanentmemory.models.SetModel_
 import com.queatz.permanentmemory.pool.on
 import com.queatz.permanentmemory.pool.onEnd
 import io.objectbox.query.OrderFlags.DESCENDING
-import kotlinx.android.synthetic.main.drawer_main.*
 import kotlinx.android.synthetic.main.screen_home.*
 
 class HomeScreen : Fragment() {
@@ -48,13 +47,12 @@ class HomeScreen : Fragment() {
 
         keepPlayingRecyclerView.adapter = subjectAdapter
 
-        app.on(DataManager::class).box(ItemModel::class).query()
-                .order(ItemModel_.updated, DESCENDING)
-                .build()
-                .findFirst()
-                ?.let {
-                    worldOfTheDay.text = it.question
-                }
+        app.on(SettingsManager::class).get().wordOfTheDay?.let {
+            app.on(DataManager::class).box(ItemModel::class).get(it)?.let {
+                worldOfTheDay.text = it.question
+                wordOfTheDayProgress.progress = app.on(ProgressManager::class).getProgress(it)
+            }
+        }
     }
 
     override fun onDestroy() {

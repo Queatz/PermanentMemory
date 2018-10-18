@@ -133,7 +133,7 @@
     },
     {
       "id": "5:4755326001039344435",
-      "lastPropertyId": "4:8607157148633586951",
+      "lastPropertyId": "7:2516998579925962163",
       "name": "SettingsModel",
       "properties": [
         {
@@ -151,20 +151,32 @@
         {
           "id": "4:8607157148633586951",
           "name": "isInitialSubjectLoaded"
+        },
+        {
+          "id": "5:7404748712062380799",
+          "name": "wordOfTheDayDate"
+        },
+        {
+          "id": "7:2516998579925962163",
+          "name": "wordOfTheDay"
         }
       ],
       "relations": []
     }
   ],
   "lastEntityId": "5:4755326001039344435",
-  "lastIndexId": "0:0",
+  "lastIndexId": "1:1653864712996890394",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 4,
   "modelVersionParserMinimum": 4,
   "retiredEntityUids": [],
-  "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredIndexUids": [
+    1653864712996890394
+  ],
+  "retiredPropertyUids": [
+    1217815677733281590
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

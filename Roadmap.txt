@@ -19,12 +19,10 @@ TODO
 	[ ] download all/upload all ->
 		permanent_memory_all_subjects.json
 
-[ ] word of the day
-	[ ] Pick a word between 20% and 90% learned
-	[ ] Word changes at midnight
-
 [ ] progress history screen per set+subject
 	[ ] Vert menu (Progress, Edit, Archive)
+
+[ ] Toggle random/normal/inverse mode from drawer
 
 ENHANCE
 ====
@@ -32,6 +30,10 @@ ENHANCE
 
 DONE
 ====
+
+[x] word of the day
+	[x] Pick a word between 20% and 90% learned
+	[x] Word changes at midnight
 
 [x] Google Play page - $1.69
 	[x] icon

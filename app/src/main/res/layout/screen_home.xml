@@ -45,10 +45,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/worldOfTheDayHeader"
-            android:padding="@dimen/padDouble"
+            android:padding="@dimen/pad"
             android:gravity="center_horizontal"
             android:textAppearance="?android:textAppearanceLarge"
             tools:text="Giờ" />
+
+        <ProgressBar
+            android:id="@+id/wordOfTheDayProgress"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pad"
+            android:layout_marginEnd="@dimen/pad"
+            android:layout_marginBottom="@dimen/pad"
+            android:indeterminate="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent=".4"
+            app:layout_constraintTop_toBottomOf="@+id/worldOfTheDay"/>
+
 
         <TextView
             android:id="@+id/keepPlaying"
@@ -56,7 +71,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/worldOfTheDay"
+            app:layout_constraintTop_toBottomOf="@+id/wordOfTheDayProgress"
             android:padding="@dimen/padDouble"
             android:textStyle="bold"
             android:textAllCaps="true"
