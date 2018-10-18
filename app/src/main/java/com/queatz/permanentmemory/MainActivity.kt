@@ -53,6 +53,8 @@ class MainActivity : FragmentActivity() {
         }
 
         sendFeedbackButton.setOnClickListener { app.on(EmailManager::class).sendFeedback() }
+
+        app.on(InitializationManager::class).initialize()
     }
 
     override fun onBackPressed() {
