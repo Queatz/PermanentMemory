@@ -26,7 +26,6 @@ class PlayScreen : Fragment() {
 
     private lateinit var set: SetModel
     private lateinit var subject: SubjectModel
-    private lateinit var items: List<ItemModel>
     private lateinit var item: ItemModel
     private var isInverse = false
     private var isAlreadyLearned = false
@@ -39,7 +38,6 @@ class PlayScreen : Fragment() {
         val id = arguments?.getLong(Extras.ID) ?: return
         set = app.on(DataManager::class).box(SetModel::class).get(id) ?: return
         subject = app.on(DataManager::class).box(SubjectModel::class).get(set.subject) ?: return
-        items = app.on(DataManager::class).box(ItemModel::class).find(ItemModel_.set, id)
 
         submitButton.setOnClickListener { submitAnswer() }
 
@@ -101,6 +99,7 @@ class PlayScreen : Fragment() {
         app.on(DataManager::class).box(SubjectModel::class).put(subject)
 
         if (!isAlreadyLearned && app.on(ProgressManager::class).getProgress(set) >= 100) {
+            isAlreadyLearned = true
             AlertDialog.Builder(app.on(ContextManager::class).context)
                     .setTitle(R.string.learning_complete)
                     .setMessage(R.string.learning_complete_message)
@@ -131,14 +130,28 @@ class PlayScreen : Fragment() {
             submitButton.setText(R.string.submit)
         }
 
+        val itemsQuery = app.on(DataManager::class).box(ItemModel::class).query().equal(ItemModel_.set, set.objectBoxId)
+        if (!isAlreadyLearned) {
+            itemsQuery.less(ItemModel_.streak, 10)
+        }
+        val  items = itemsQuery.build().find()
+
+
         if (items.isEmpty()) return
 
-        item = items[Random().nextInt(items.size)]
+        val nextItem = items[Random().nextInt(items.size)]
+
+        if (::item.isInitialized && nextItem.objectBoxId == item.objectBoxId) {
+            isInverse = !isInverse
+        } else {
+            isInverse = Random().nextInt(2) == 0
+        }
+
+        item = nextItem
 
         answerText.setText("")
         answerText.requestFocus()
 
-        isInverse = Random().nextInt(2) == 0
         if (isInverse) {
             questionText.text = item.answer
             answerText.hint = subject.name

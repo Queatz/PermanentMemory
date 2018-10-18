@@ -1,5 +1,6 @@
 package com.queatz.permanentmemory.adapters
 
+import android.graphics.PorterDuff
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -50,7 +51,20 @@ class SubjectAdapter constructor(
                 val subject = items[position]
                 viewHolder.itemView.setOnClickListener { onClickListener.invoke(subject) }
                 viewHolder.subjectName.text = items[position].name
-                viewHolder.subjectProgress.progress = app.on(ProgressManager::class).getProgress(subject)
+                val progress = app.on(ProgressManager::class).getProgress(subject)
+                viewHolder.subjectProgress.progress = progress
+
+                when {
+                    progress == 0 -> {
+                        viewHolder.subjectProgress.progressDrawable.colorFilter = null
+                    }
+                    progress < 100 -> {
+                        viewHolder.subjectProgress.progressDrawable.colorFilter = null
+                    }
+                    else -> {
+                        viewHolder.subjectProgress.progressDrawable.setColorFilter(viewHolder.itemView.resources.getColor(R.color.green), PorterDuff.Mode.MULTIPLY)
+                    }
+                }
             }
             is ActionViewHolder -> {
                 viewHolder.actionButton.text = viewHolder.actionButton.resources.getText(R.string.add_a_subject)
