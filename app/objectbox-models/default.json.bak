@@ -133,7 +133,7 @@
     },
     {
       "id": "5:4755326001039344435",
-      "lastPropertyId": "6:1217815677733281590",
+      "lastPropertyId": "7:2516998579925962163",
       "name": "SettingsModel",
       "properties": [
         {
@@ -157,9 +157,8 @@
           "name": "wordOfTheDayDate"
         },
         {
-          "id": "6:1217815677733281590",
-          "indexId": "1:1653864712996890394",
-          "name": "wordOfTheDayId"
+          "id": "7:2516998579925962163",
+          "name": "wordOfTheDay"
         }
       ],
       "relations": []
@@ -172,8 +171,12 @@
   "modelVersion": 4,
   "modelVersionParserMinimum": 4,
   "retiredEntityUids": [],
-  "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredIndexUids": [
+    1653864712996890394
+  ],
+  "retiredPropertyUids": [
+    1217815677733281590
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

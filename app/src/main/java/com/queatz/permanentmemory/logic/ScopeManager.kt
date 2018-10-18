@@ -21,7 +21,7 @@ class ScopeManager : PoolMember() {
     }
 
     override fun onPoolEnd() {
-        dataSubscriptions.forEach { it.cancel() }
+        clear()
     }
 }
 

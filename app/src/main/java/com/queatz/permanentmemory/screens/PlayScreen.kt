@@ -12,10 +12,7 @@ import android.view.inputmethod.EditorInfo
 import com.queatz.permanentmemory.Extras
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.app
-import com.queatz.permanentmemory.logic.ContextManager
-import com.queatz.permanentmemory.logic.DataManager
-import com.queatz.permanentmemory.logic.NavigationManager
-import com.queatz.permanentmemory.logic.ProgressManager
+import com.queatz.permanentmemory.logic.*
 import com.queatz.permanentmemory.models.*
 import com.queatz.permanentmemory.pool.on
 import com.queatz.permanentmemory.pool.onEnd
@@ -141,10 +138,10 @@ class PlayScreen : Fragment() {
 
         val nextItem = items[Random().nextInt(items.size)]
 
-        if (::item.isInitialized && nextItem.objectBoxId == item.objectBoxId) {
-            isInverse = !isInverse
-        } else {
-            isInverse = Random().nextInt(2) == 0
+        isInverse = when (app.on(SettingsManager::class).get().playMode) {
+            PlayMode.RANDOM -> if (::item.isInitialized && nextItem.objectBoxId == item.objectBoxId) { !isInverse } else { Random().nextInt(2) == 0 }
+            PlayMode.NORMAL -> false
+            PlayMode.INVERSE -> true
         }
 
         item = nextItem

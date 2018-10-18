@@ -10,15 +10,14 @@ import android.view.ViewGroup
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.adapters.SetAdapter
 import com.queatz.permanentmemory.app
-import com.queatz.permanentmemory.logic.DataManager
-import com.queatz.permanentmemory.logic.NavigationManager
-import com.queatz.permanentmemory.logic.ProgressManager
-import com.queatz.permanentmemory.logic.SettingsManager
+import com.queatz.permanentmemory.logic.*
 import com.queatz.permanentmemory.models.ItemModel
 import com.queatz.permanentmemory.models.SetModel
 import com.queatz.permanentmemory.models.SetModel_
+import com.queatz.permanentmemory.models.SettingsModel
 import com.queatz.permanentmemory.pool.on
 import com.queatz.permanentmemory.pool.onEnd
+import io.objectbox.android.AndroidScheduler
 import io.objectbox.query.OrderFlags.DESCENDING
 import kotlinx.android.synthetic.main.screen_home.*
 
@@ -53,6 +52,31 @@ class HomeScreen : Fragment() {
                 wordOfTheDayProgress.progress = app.on(ProgressManager::class).getProgress(it)
             }
         }
+
+        playModeRandom.setOnClickListener { app.on(SettingsManager::class).get().apply {
+            this.playMode = PlayMode.RANDOM
+            app.on(SettingsManager::class).save(this)
+        } }
+        playModeNormal.setOnClickListener { app.on(SettingsManager::class).get().apply {
+            this.playMode = PlayMode.NORMAL
+            app.on(SettingsManager::class).save(this)
+        } }
+        playModeInverse.setOnClickListener { app.on(SettingsManager::class).get().apply {
+            this.playMode = PlayMode.INVERSE
+            app.on(SettingsManager::class).save(this)
+        } }
+
+        app.on(DataManager::class).box(SettingsModel::class).query().build()
+                .subscribe()
+                .on(AndroidScheduler.mainThread())
+                .observer {
+                    if (getView() == null) return@observer
+                    val playMode = app.on(SettingsManager::class).get().playMode
+                    playModeRandom.setTextColor(resources.getColor(if (playMode == PlayMode.RANDOM) R.color.colorAccent else R.color.colorPrimary))
+                    playModeNormal.setTextColor(resources.getColor(if (playMode == PlayMode.NORMAL) R.color.colorAccent else R.color.colorPrimary))
+                    playModeInverse.setTextColor(resources.getColor(if (playMode == PlayMode.INVERSE) R.color.colorAccent else R.color.colorPrimary))
+                }
+                .addToScope(app.on(ScopeManager::class))
     }
 
     override fun onDestroy() {

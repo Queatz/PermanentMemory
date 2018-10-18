@@ -9,6 +9,6 @@
     <dimen name="padDouble">16dp</dimen>
     <dimen name="padHalf">4dp</dimen>
     <dimen name="elevation">4dp</dimen>
-    <dimen name="cardCorner">4dp</dimen>
+    <dimen name="cardCornerRadius">4dp</dimen>
     <dimen name="defaultButtonWidth">54dp</dimen>
 </resources>

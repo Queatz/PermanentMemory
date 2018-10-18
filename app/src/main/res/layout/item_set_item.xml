@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:elevation="@dimen/elevation"
         android:background="@color/white"
-        app:cardCornerRadius="@dimen/cardCorner">
+        app:cardCornerRadius="@dimen/cardCornerRadius">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
