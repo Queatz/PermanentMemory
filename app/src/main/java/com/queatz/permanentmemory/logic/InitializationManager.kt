@@ -38,7 +38,7 @@ class InitializationManager : PoolMember() {
                     ItemModel(set = set.objectBoxId, question = "Mười bảy", answer = "Seventeen"),
                     ItemModel(set = set.objectBoxId, question = "Mười tám", answer = "Eighteen"),
                     ItemModel(set = set.objectBoxId, question = "Mười chín", answer = "Nineteen"),
-                    ItemModel(set = set.objectBoxId, question = "Hai Mười", answer = "Twenty"),
+                    ItemModel(set = set.objectBoxId, question = "Hai mười", answer = "Twenty"),
                     ItemModel(set = set.objectBoxId, question = "Hai mươi mốt", answer = "Twenty one"),
                     ItemModel(set = set.objectBoxId, question = "Một trăm", answer = "One hundred"),
                     ItemModel(set = set.objectBoxId, question = "Một nghìn", answer = "One thousand"),

@@ -77,6 +77,9 @@ class HomeScreen : Fragment() {
                     playModeInverse.setTextColor(resources.getColor(if (playMode == PlayMode.INVERSE) R.color.colorAccent else R.color.colorPrimary))
                 }
                 .addToScope(app.on(ScopeManager::class))
+
+        exportButton.setOnClickListener { app.on(ImportManager::class).export() }
+        importButton.setOnClickListener { app.on(ImportManager::class).import() }
     }
 
     override fun onDestroy() {

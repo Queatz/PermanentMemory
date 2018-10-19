@@ -31,4 +31,13 @@
     <string name="learning_complete_message">You\'ve successfully learned everything in this set!</string>
     <string name="continue_text">Continue</string>
     <string name="play_mode">Play mode</string>
+    <string name="inverse">Inverse</string>
+    <string name="normal">Normal</string>
+    <string name="random">Random</string>
+    <string name="save_to">Save to...</string>
+    <string name="export_dataset">Export dataset</string>
+    <string name="import_dataset">Import dataset</string>
+    <string name="import_error">Import error</string>
+    <string name="ok">OK</string>
+    <string name="import_successful">Import successful</string>
 </resources>

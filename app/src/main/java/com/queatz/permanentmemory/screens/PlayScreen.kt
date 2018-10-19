@@ -87,7 +87,7 @@ class PlayScreen : Fragment() {
         brainSample.correct = when (isInverse) { true -> item.question false -> item.answer }.toLowerCase() == answer.trim().toLowerCase()
         app.on(DataManager::class).box(BrainSampleModel::class).put(brainSample)
 
-        item.streak = when (brainSample.correct) { true -> item.streak + 1 false -> 0 }
+        item.streak = when (brainSample.correct) { true -> item.streak + 1 false -> item.streak / 2 }
         app.on(DataManager::class).box(ItemModel::class).put(item)
 
         set.updated = Date()

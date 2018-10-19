@@ -1,6 +1,7 @@
 package com.queatz.permanentmemory
 
 import android.app.Service
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
@@ -101,6 +102,10 @@ class MainActivity : FragmentActivity() {
     override fun onDestroy() {
         onEnd()
         super.onDestroy()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        app.on(FileManager::class).onActivityResult(requestCode, resultCode, data)
     }
 }
 

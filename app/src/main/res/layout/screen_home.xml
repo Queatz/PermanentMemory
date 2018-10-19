@@ -8,100 +8,104 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:isScrollContainer="true">
 
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:padding="@dimen/padDouble"
             android:gravity="center_horizontal"
-            android:textAppearance="?android:textAppearanceLarge"
+            android:padding="@dimen/padDouble"
             android:text="@string/app_name"
-            android:textColor="@color/colorAccent" />
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/settingsHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
-            android:padding="@dimen/padDouble"
-            android:textStyle="bold"
-            android:textAllCaps="true"
             android:gravity="center_horizontal"
+            android:padding="@dimen/padDouble"
+            android:text="@string/play_mode"
+            android:textAllCaps="true"
             android:textAppearance="?android:textAppearanceSmall"
-            android:text="@string/play_mode" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/settingPlayMode"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/settingsHeader"
-                app:cardCornerRadius="@dimen/cardCornerRadius">
+        <android.support.v7.widget.CardView
+            android:id="@+id/settingPlayMode"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="@dimen/cardCornerRadius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settingsHeader">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/playModeRandom"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_horizontal">
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:text="@string/random"
+                    android:textColor="@color/colorPrimary" />
 
-                    <Button
-                        android:id="@+id/playModeRandom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="?selectableItemBackgroundBorderless"
-                        android:text="Random" />
+                <Button
+                    android:id="@+id/playModeNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:text="@string/normal"
+                    android:textColor="@color/colorPrimary" />
 
-                    <Button
-                        android:id="@+id/playModeNormal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="?selectableItemBackgroundBorderless"
-                        android:text="Normal" />
+                <Button
+                    android:id="@+id/playModeInverse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:text="@string/inverse"
+                    android:textColor="@color/colorPrimary" />
 
-                    <Button
-                        android:id="@+id/playModeInverse"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="?selectableItemBackgroundBorderless"
-                        android:text="Inverse" />
+            </LinearLayout>
 
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
 
         <TextView
             android:id="@+id/worldOfTheDayHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padDouble"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settingPlayMode"
-            android:padding="@dimen/padDouble"
-            android:textStyle="bold"
-            android:textAllCaps="true"
             android:gravity="center_horizontal"
+            android:padding="@dimen/padDouble"
+            android:text="@string/word_of_the_day"
+            android:textAllCaps="true"
             android:textAppearance="?android:textAppearanceSmall"
-            android:text="@string/word_of_the_day" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settingPlayMode" />
 
         <TextView
             android:id="@+id/worldOfTheDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/worldOfTheDayHeader"
-            android:padding="@dimen/pad"
             android:gravity="center_horizontal"
+            android:padding="@dimen/pad"
             android:textAppearance="?android:textAppearanceLarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/worldOfTheDayHeader"
             tools:text="Giờ" />
 
         <ProgressBar
@@ -115,32 +119,63 @@
             android:indeterminate="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintWidth_percent=".4"
-            app:layout_constraintTop_toBottomOf="@+id/worldOfTheDay"/>
+            app:layout_constraintTop_toBottomOf="@+id/worldOfTheDay"
+            app:layout_constraintWidth_percent=".4" />
 
 
         <TextView
             android:id="@+id/keepPlaying"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/wordOfTheDayProgress"
-            android:padding="@dimen/padDouble"
-            android:textStyle="bold"
-            android:textAllCaps="true"
             android:gravity="center_horizontal"
+            android:padding="@dimen/padDouble"
+            android:text="@string/keep_playing"
+            android:textAllCaps="true"
             android:textAppearance="?android:textAppearanceSmall"
-            android:text="@string/keep_playing" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wordOfTheDayProgress" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/keepPlayingRecyclerView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:clipChildren="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/keepPlaying"
-            android:clipChildren="false" />
+            app:layout_constraintTop_toBottomOf="@+id/keepPlaying" />
+
+        <Button
+            android:id="@+id/exportButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/keepPlayingRecyclerView"
+            android:layout_margin="@dimen/padDouble"
+            android:background="?selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padDouble"
+            android:text="@string/export_dataset"
+            android:textColor="@color/blue" />
+
+        <Button
+            android:id="@+id/importButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exportButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="@dimen/padDouble"
+            android:background="?selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padDouble"
+            android:text="@string/import_dataset"
+            android:textColor="@color/blue" />
 
     </android.support.constraint.ConstraintLayout>
 
