@@ -8,11 +8,13 @@
 
     <TextView
         android:id="@+id/setName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/padForIcon"
+        android:layout_marginEnd="@dimen/padForIcon"
         android:padding="@dimen/padDouble"
         android:gravity="center_horizontal"
         android:textAppearance="?android:textAppearanceLarge"

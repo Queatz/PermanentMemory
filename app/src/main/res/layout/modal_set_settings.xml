@@ -19,6 +19,7 @@
         android:textAppearance="?android:textAppearanceLarge"
         android:background="@null"
         android:importantForAutofill="no"
+        android:imeOptions="flagNoExtractUi"
         android:inputType="textCapSentences" />
 
 </android.support.constraint.ConstraintLayout>
