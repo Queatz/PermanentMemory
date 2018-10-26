@@ -30,11 +30,10 @@
                 android:layout_marginEnd="@dimen/padForIcon"
                 android:layout_marginBottom="@dimen/pad"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Tiếng Việt"
-                tools:visibility="visible" />
+                tools:text="Tiếng Việt" />
 
             <TextView
                 android:id="@+id/setStatus"

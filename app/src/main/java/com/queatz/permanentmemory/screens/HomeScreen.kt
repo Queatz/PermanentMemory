@@ -45,6 +45,7 @@ class HomeScreen : Fragment() {
                 .let { subjectAdapter.items = it.asSequence().take(3).toMutableList() }
 
         keepPlayingRecyclerView.adapter = subjectAdapter
+        keepPlayingRecyclerView.isNestedScrollingEnabled = false
 
         app.on(SettingsManager::class).get().wordOfTheDay?.let {
             app.on(DataManager::class).box(ItemModel::class).get(it)?.let {

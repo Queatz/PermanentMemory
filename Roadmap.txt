@@ -1,5 +1,5 @@
 
-TODO
+TODO - MEDIUM
 ====
 
 [ ] null states ( add a set / this is what a set is)
@@ -9,27 +9,53 @@ TODO
 	[ ] Word of the day
 	[ ] Keep playing
 
-[ ] settings slide
+[ ] settings area
 	[ ] streak length
 	[ ] penalty points
 	[ ] days to wait after completeing a set to refresh memory
+	[ ] Calibrate number of words you can keep in your head (used for implicit cycles)
 	[ ] tips
-	[ ] dark mode
+	[ ] dark mode (on/off/auto)
 	[x] export as json/import as json ->
 		permanent_memory_all_subjects.json
 
 [ ] progress history screen per set+subject
 	[ ] Vert menu (Progress, Edit, Archive)
 
+TODO - SMALL
+====
+
+[ ] Review set button, try every word once (shows up once completed)
+	[ ] Words have review date on them
+	[ ] Set needs review if any words need review in the set
+	[ ] 24h later, 3 days, 7 days, 14 days, 30, 60, 90 days
+	[ ] Must get the words correct once
+	[ ] Wrong words reset the reminder clock + in progress set
+
+[.] only pick top ten random words with streak below 10, order by highest streak to lowest
+
+[ ] Import into set from CSV
+[ ] Show complete with each variant (overlay bars)
+[ ] Practice mode (list of flash cards, tap to flip)
+
+
 ENHANCE
 ====
 
 [ ] record auto play audio
-[ ] subtle sounds (use ubuntu)
-
+[ ] multiple choice sets (optional)
+[ ] subtle sounds (use ubuntu sounds)
+[ ] world map learning vietnamese
 
 DONE
 ====
+
+[x] play button from edit set screen
+[x] show number of words beneath progress bar
+[x] Show number of cards on set edit screen
+[x] TextView buttons should be Buttons and focusable
+[x] App...Progress at top in play screen
+[x] scrollbars on set screen
 
 [x] Keyboard adjust
 [x] layout avoid buttons set screen

@@ -15,14 +15,47 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="@dimen/padForIcon"
         android:layout_marginEnd="@dimen/padForIcon"
-        android:padding="@dimen/padDouble"
+        android:paddingTop="@dimen/padDouble"
+        android:paddingStart="@dimen/padDouble"
+        android:paddingEnd="@dimen/padDouble"
         android:gravity="center_horizontal"
         android:textAppearance="?android:textAppearanceLarge"
         tools:text="Time"/>
 
+    <TextView
+        android:id="@+id/setCardCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/setName"
+        android:layout_marginStart="@dimen/padForIcon"
+        android:layout_marginEnd="@dimen/padForIcon"
+        android:paddingStart="@dimen/padDouble"
+        android:paddingEnd="@dimen/padDouble"
+        android:paddingTop="@dimen/padHalf"
+        android:paddingBottom="@dimen/pad"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:textAppearanceSmall"
+        tools:text="22 cards"/>
+
     <ImageButton style="@style/Widget.AppCompat.Button.Borderless"
-        android:contentDescription="@string/navigation_drawer_open"
+        android:id="@+id/playButton"
+        android:contentDescription="@string/play_set"
+        android:layout_width="@dimen/defaultButtonWidth"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/pad"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/moreButton"
+        android:padding="@dimen/padHalf"
+        android:minWidth="0dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_play_arrow_black_24dp"
+        android:tint="@color/colorAccent"/>
+
+    <ImageButton style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/moreButton"
+        android:contentDescription="@string/navigation_drawer_open"
         android:layout_width="@dimen/defaultButtonWidth"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/pad"
@@ -40,8 +73,9 @@
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setName"
+        app:layout_constraintTop_toBottomOf="@+id/setCardCount"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:clipChildren="false" />
+        android:clipChildren="false"
+        android:scrollbars="vertical"/>
 
 </android.support.constraint.ConstraintLayout>

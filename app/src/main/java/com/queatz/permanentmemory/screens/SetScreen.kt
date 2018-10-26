@@ -10,10 +10,7 @@ import com.queatz.permanentmemory.Extras
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.adapters.ItemAdapter
 import com.queatz.permanentmemory.app
-import com.queatz.permanentmemory.logic.DataManager
-import com.queatz.permanentmemory.logic.EditorManager
-import com.queatz.permanentmemory.logic.ScopeManager
-import com.queatz.permanentmemory.logic.addToScope
+import com.queatz.permanentmemory.logic.*
 import com.queatz.permanentmemory.models.*
 import com.queatz.permanentmemory.pool.on
 import com.queatz.permanentmemory.pool.onEnd
@@ -69,9 +66,13 @@ class SetScreen : Fragment() {
         moreButton.setOnClickListener {
             app.on(EditorManager::class).renameSet(set)
         }
+
+        playButton.setOnClickListener { app.on(NavigationManager::class).playSet(set.objectBoxId) }
     }
 
     private fun update() {
+        view?: return
+
         itemAdapter.subject = app.on(DataManager::class).box(SubjectModel::class).get(set.subject)
         setName.text = set.name
         on(ScopeManager::class).clear(itemsSubscription)
@@ -80,7 +81,10 @@ class SetScreen : Fragment() {
                 .build()
                 .subscribe()
                 .on(AndroidScheduler.mainThread())
-                .observer { itemAdapter.items = it }
+                .observer {
+                    itemAdapter.items = it
+                    setCardCount?.text = resources.getQuantityString(R.plurals.num_cards, it.size, it.size)
+                }
                 .addToScope(on(ScopeManager::class))
     }
 

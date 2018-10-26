@@ -133,7 +133,6 @@ class PlayScreen : Fragment() {
         }
         val  items = itemsQuery.build().find()
 
-
         if (items.isEmpty()) return
 
         val nextItem = items[Random().nextInt(items.size)]
@@ -156,6 +155,9 @@ class PlayScreen : Fragment() {
             questionText.text = item.question
             answerText.hint = subject.inverse
         }
+
+        setProgress.progress = app.on(ProgressManager::class).getProgress(set)
+        setProgress.applyColorFromProgress()
     }
 
     override fun onDestroy() {

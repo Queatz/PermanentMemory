@@ -16,7 +16,7 @@
     <string name="update_subject">Update subject</string>
     <string name="add_a_subject">Add a subject</string>
     <string name="add_a_set">Add a set</string>
-    <string name="add_an_item">Add an item</string>
+    <string name="add_a_card">Add a card</string>
     <string name="delete">Delete</string>
     <string name="word_of_the_day">Word of the Day</string>
     <string name="keep_playing">Keep playing</string>
@@ -34,10 +34,18 @@
     <string name="inverse">Inverse</string>
     <string name="normal">Normal</string>
     <string name="random">Random</string>
-    <string name="save_to">Save to...</string>
+    <string name="save_to">Save to…</string>
     <string name="export_dataset">Export dataset</string>
     <string name="import_dataset">Import dataset</string>
     <string name="import_error">Import error</string>
     <string name="ok">OK</string>
     <string name="import_successful">Import successful</string>
+    <string name="data_line">%1$s  •  %2$s</string>
+    <string name="play_set">Play this set</string>
+
+    <plurals name="num_cards">
+        <item quantity="zero">No cards</item>
+        <item quantity="one">%1$s card</item>
+        <item quantity="other">%1$s cards</item>
+    </plurals>
 </resources>

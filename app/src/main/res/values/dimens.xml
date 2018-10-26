@@ -10,6 +10,6 @@
     <dimen name="padHalf">4dp</dimen>
     <dimen name="elevation">4dp</dimen>
     <dimen name="cardCornerRadius">4dp</dimen>
-    <dimen name="defaultButtonWidth">54dp</dimen>
+    <dimen name="defaultButtonWidth">48dp</dimen>
     <dimen name="padForIcon">64dp</dimen>
 </resources>

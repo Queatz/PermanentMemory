@@ -1,6 +1,5 @@
 package com.queatz.permanentmemory.adapters
 
-import android.graphics.PorterDuff
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.app
 import com.queatz.permanentmemory.logic.ProgressManager
+import com.queatz.permanentmemory.logic.applyColorFromProgress
 import com.queatz.permanentmemory.models.SubjectModel
 import com.queatz.permanentmemory.pool.on
 import kotlinx.android.synthetic.main.item_subject.view.*
@@ -53,18 +53,7 @@ class SubjectAdapter constructor(
                 viewHolder.subjectName.text = items[position].name
                 val progress = app.on(ProgressManager::class).getProgress(subject)
                 viewHolder.subjectProgress.progress = progress
-
-                when {
-                    progress == 0 -> {
-                        viewHolder.subjectProgress.progressDrawable.colorFilter = null
-                    }
-                    progress < 100 -> {
-                        viewHolder.subjectProgress.progressDrawable.colorFilter = null
-                    }
-                    else -> {
-                        viewHolder.subjectProgress.progressDrawable.setColorFilter(viewHolder.itemView.resources.getColor(R.color.green), PorterDuff.Mode.MULTIPLY)
-                    }
-                }
+                viewHolder.subjectProgress.applyColorFromProgress()
             }
             is ActionViewHolder -> {
                 viewHolder.actionButton.text = viewHolder.actionButton.resources.getText(R.string.add_a_subject)

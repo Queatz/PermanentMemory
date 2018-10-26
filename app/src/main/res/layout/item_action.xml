@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <Button style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/actionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -13,11 +13,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="?selectableItemBackground"
         android:padding="@dimen/padDouble"
         android:gravity="center_horizontal"
         tools:text="Add a set"
-        android:clickable="true"
         android:textAppearance="?android:textAppearanceMedium"
         android:textAllCaps="true"
         android:textColor="@color/colorAccent"/>

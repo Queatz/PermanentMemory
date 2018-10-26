@@ -88,7 +88,7 @@ class ItemAdapter constructor(
                 viewHolder.answerText.addTextChangedListener(viewHolder.answerTextWatcher)
             }
             is ActionViewHolder -> {
-                viewHolder.actionButton.text = viewHolder.actionButton.resources.getText(R.string.add_an_item)
+                viewHolder.actionButton.text = viewHolder.actionButton.resources.getText(R.string.add_a_card)
                 viewHolder.actionButton.setOnClickListener { onActionClickListener.invoke() }
             }
         }

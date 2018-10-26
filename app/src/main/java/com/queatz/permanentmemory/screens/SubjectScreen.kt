@@ -1,6 +1,5 @@
 package com.queatz.permanentmemory.screens
 
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -68,18 +67,7 @@ class SubjectScreen : Fragment() {
 
         val progress = app.on(ProgressManager::class).getProgress(subject)
         subjectProgress.progress = progress
-
-        when {
-            progress == 0 -> {
-                subjectProgress.progressDrawable.colorFilter = null
-            }
-            progress < 100 -> {
-                subjectProgress.progressDrawable.colorFilter = null
-            }
-            else -> {
-                subjectProgress.progressDrawable.setColorFilter(resources.getColor(R.color.green), PorterDuff.Mode.MULTIPLY)
-            }
-        }
+        subjectProgress.applyColorFromProgress()
 
         subjectName.text = subject.name
         on(ScopeManager::class).clear(setsSubscription)
