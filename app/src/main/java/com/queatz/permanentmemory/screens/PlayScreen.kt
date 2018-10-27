@@ -130,12 +130,13 @@ class PlayScreen : Fragment() {
         val itemsQuery = app.on(DataManager::class).box(ItemModel::class).query().equal(ItemModel_.set, set.objectBoxId)
         if (!isAlreadyLearned) {
             itemsQuery.less(ItemModel_.streak, 10)
+            itemsQuery.orderDesc(ItemModel_.streak)
         }
-        val  items = itemsQuery.build().find()
+        val items = itemsQuery.build().find()
 
         if (items.isEmpty()) return
 
-        val nextItem = items[Random().nextInt(items.size)]
+        val nextItem = items[Random().nextInt(items.size) % 10]
 
         isInverse = when (app.on(SettingsManager::class).get().playMode) {
             PlayMode.RANDOM -> if (::item.isInitialized && nextItem.objectBoxId == item.objectBoxId) { !isInverse } else { Random().nextInt(2) == 0 }

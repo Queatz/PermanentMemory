@@ -32,12 +32,18 @@ TODO - SMALL
 	[ ] Must get the words correct once
 	[ ] Wrong words reset the reminder clock + in progress set
 
-[.] only pick top ten random words with streak below 10, order by highest streak to lowest
-
 [ ] Import into set from CSV
 [ ] Show complete with each variant (overlay bars)
 [ ] Practice mode (list of flash cards, tap to flip)
 
+[ ] Word of the day progress bar should turn green
+[ ] I needs to be harder to delete things!
+[ ] Scroll messed up on home screen on load
+[ ] Select all when renaming set
+[ ] BrainSample should record inverse or not
+[ ] Sets should be sorted by in progress, not started, complete
+[ ] Real marketing screenshots
+[ ] 
 
 ENHANCE
 ====
@@ -49,6 +55,8 @@ ENHANCE
 
 DONE
 ====
+
+[x] only pick top ten random words with streak below 10, order by highest streak to lowest
 
 [x] play button from edit set screen
 [x] show number of words beneath progress bar
