@@ -14,8 +14,9 @@ TODO - MEDIUM
 	[ ] penalty points
 	[ ] days to wait after completeing a set to refresh memory
 	[ ] Calibrate number of words you can keep in your head (used for implicit cycles)
-	[ ] tips
+	[ ] tips on organizing
 	[ ] dark mode (on/off/auto)
+	[ ] Import into set from CSV
 	[x] export as json/import as json ->
 		permanent_memory_all_subjects.json
 
@@ -25,46 +26,36 @@ TODO - MEDIUM
 TODO - SMALL
 ====
 
-[ ] study button per set
-[ ] Game mode: Text, flashcards, multiple choice
-[ ] play screen 1st time red bar bug
-[ ] write description
-[ ] 
-[ ] 
-[ ] 
-[ ] 
-[ ] 
-[ ] 
+[ ] 🔴1️⃣ Game mode: Text, flashcards, multiple choice
+[ ] write description for Play Store
 
-[ ] MD Review set button, try every word once (shows up once completed)
+[ ] 🔴2️⃣ MD Review set button, try every word once (shows up once completed)
 	[ ] Words have review date on them
 	[ ] Set needs review if any words need review in the set
 	[ ] 24h later, 3 days, 7 days, 14 days, 30, 60, 90 days
 	[ ] Must get the words correct once
 	[ ] Wrong words reset the reminder clock + in progress set
+[ ] MD Show complete with each variant (overlay or stacked bars / or in stats)
+[ ] 🔴2️⃣ MD Practice mode (list of flash cards, tap to reveal)
 
-[ ] MD Import into set from CSV
-[ ] MD Show complete with each variant (overlay or stacked bars)
-[ ] MD Practice mode (list of flash cards, tap to flip)
-
-[ ] SM recycling view don't scroll to focus
+[ ] SM recycling view shouldn't scroll to focus
 
 ENHANCE
 ====
 
-[ ] search (and locate) word
+[ ] MD search (and locate) word
 [ ] XL record auto play audio
 [ ] XL multiple choice sets (optional, it's for sentences)
 [ ] MD subtle sounds (use ubuntu sounds)
 [ ] LG world map learning vietnamese (learning market, votes)
-[ ] MD use Google speak API choose language
+[ ] MD use Google speak API choose language + autoplay
 [ ] MD Real marketing screenshots
-
 [ ] Final quiz with full sentances? / timed? Both normal and inverse
 
 DONE
 ====
 
+[x] play screen 1st time red bar bug
 [x] Scroll messed up on home screen on load
 [x] Sets should be sorted by in progress, not started, complete
 [x] BrainSample should record inverse or not

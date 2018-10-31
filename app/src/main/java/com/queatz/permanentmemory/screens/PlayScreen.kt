@@ -160,8 +160,8 @@ class PlayScreen : Fragment() {
 
         set.progress = app.on(ProgressManager::class).getProgress(set)
         app.on(DataManager::class).box(SetModel::class).put(set)
-        setProgress.applyColorFromProgress()
         setProgress.progress = set.progress
+        setProgress.applyColorFromProgress()
     }
 
     override fun onDestroy() {

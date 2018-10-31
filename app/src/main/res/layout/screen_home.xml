@@ -81,6 +81,46 @@
 
         </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:id="@+id/settingPlayType"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="@dimen/cardCornerRadius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settingPlayMode"
+            android:layout_marginTop="@dimen/padDouble">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/playTypeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/pad"
+                    android:paddingEnd="@dimen/pad"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:text="@string/text"
+                    android:textColor="@color/colorPrimary" />
+
+                <Button
+                    android:id="@+id/playTypeFlashCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/padDouble"
+                    android:paddingEnd="@dimen/padDouble"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:text="@string/flash_card"
+                    android:textColor="@color/colorPrimary" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
         <TextView
             android:id="@+id/worldOfTheDayHeader"
             android:layout_width="wrap_content"
@@ -94,7 +134,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settingPlayMode" />
+            app:layout_constraintTop_toBottomOf="@+id/settingPlayType" />
 
         <TextView
             android:id="@+id/worldOfTheDay"

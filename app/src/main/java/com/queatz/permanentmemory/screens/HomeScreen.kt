@@ -1,6 +1,5 @@
 package com.queatz.permanentmemory.screens
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -28,15 +27,9 @@ class HomeScreen : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        keepPlayingRecyclerView.layoutManager = object : LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false) {
-            override fun requestChildRectangleOnScreen(parent: RecyclerView, child: View, rect: Rect, immediate: Boolean): Boolean {
-                return false
-            }
-
-            override fun requestChildRectangleOnScreen(parent: RecyclerView, child: View, rect: Rect, immediate: Boolean, focusedChildVisible: Boolean): Boolean {
-                return false
-            }
-        }
+        titleTextView.isFocusable = true
+        titleTextView.requestFocus()
+        keepPlayingRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         keepPlayingRecyclerView.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
         val subjectAdapter = SetAdapter(
@@ -76,16 +69,29 @@ class HomeScreen : Fragment() {
             this.playMode = PlayMode.INVERSE
             app.on(SettingsManager::class).save(this)
         } }
+        playTypeText.setOnClickListener { app.on(SettingsManager::class).get().apply {
+            this.gameMode = GameMode.TEXT
+            app.on(SettingsManager::class).save(this)
+        } }
+        playTypeFlashCard.setOnClickListener { app.on(SettingsManager::class).get().apply {
+            this.gameMode = GameMode.FLASH_CARD
+            app.on(SettingsManager::class).save(this)
+        } }
 
         app.on(DataManager::class).box(SettingsModel::class).query().build()
                 .subscribe()
                 .on(AndroidScheduler.mainThread())
                 .observer {
                     if (getView() == null) return@observer
-                    val playMode = app.on(SettingsManager::class).get().playMode
-                    playModeRandom.setTextColor(resources.getColor(if (playMode == PlayMode.RANDOM) R.color.colorAccent else R.color.colorPrimary))
-                    playModeNormal.setTextColor(resources.getColor(if (playMode == PlayMode.NORMAL) R.color.colorAccent else R.color.colorPrimary))
-                    playModeInverse.setTextColor(resources.getColor(if (playMode == PlayMode.INVERSE) R.color.colorAccent else R.color.colorPrimary))
+                    app.on(SettingsManager::class).get().playMode.let {
+                        playModeRandom.setTextColor(resources.getColor(if (it == PlayMode.RANDOM) R.color.colorAccent else R.color.colorPrimary))
+                        playModeNormal.setTextColor(resources.getColor(if (it == PlayMode.NORMAL) R.color.colorAccent else R.color.colorPrimary))
+                        playModeInverse.setTextColor(resources.getColor(if (it == PlayMode.INVERSE) R.color.colorAccent else R.color.colorPrimary))
+                    }
+                    app.on(SettingsManager::class).get().gameMode.let {
+                        playTypeText.setTextColor(resources.getColor(if (it == GameMode.TEXT) R.color.colorAccent else R.color.colorPrimary))
+                        playTypeFlashCard.setTextColor(resources.getColor(if (it == GameMode.FLASH_CARD) R.color.colorAccent else R.color.colorPrimary))
+                    }
                 }
                 .addToScope(app.on(ScopeManager::class))
 
