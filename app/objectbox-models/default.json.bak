@@ -133,7 +133,7 @@
     },
     {
       "id": "5:4755326001039344435",
-      "lastPropertyId": "7:2516998579925962163",
+      "lastPropertyId": "8:1382310504223839599",
       "name": "SettingsModel",
       "properties": [
         {
@@ -159,6 +159,10 @@
         {
           "id": "7:2516998579925962163",
           "name": "wordOfTheDay"
+        },
+        {
+          "id": "8:1382310504223839599",
+          "name": "playMode"
         }
       ],
       "relations": []

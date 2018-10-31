@@ -51,7 +51,8 @@ class SubjectScreen : Fragment() {
                 { app.on(NavigationManager::class).playSet(it.objectBoxId) },
                 { app.on(NavigationManager::class).editSet(it.objectBoxId) },
                 {
-                    app.on(DataManager::class).box(SetModel::class).put(SetModel(subject = subject.objectBoxId, name = "New set"))
+                    val setId = app.on(DataManager::class).box(SetModel::class).put(SetModel(subject = subject.objectBoxId, name = "New set"))
+                    app.on(NavigationManager::class).editSet(setId)
                 }
         )
 
@@ -73,6 +74,7 @@ class SubjectScreen : Fragment() {
         on(ScopeManager::class).clear(setsSubscription)
         setsSubscription = app.on(DataManager::class).box(SetModel::class).query()
                 .equal(SetModel_.subject, subject.objectBoxId)
+                .order(SetModel_.progress)
                 .build()
                 .subscribe()
                 .on(AndroidScheduler.mainThread())

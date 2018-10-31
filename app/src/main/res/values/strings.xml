@@ -42,6 +42,10 @@
     <string name="import_successful">Import successful</string>
     <string name="data_line">%1$s  •  %2$s</string>
     <string name="play_set">Play this set</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="confirm_pls">Are you sure?</string>
+    <string name="you_cannot_undo">You cannot undo this action.</string>
 
     <plurals name="num_cards">
         <item quantity="zero">No cards</item>

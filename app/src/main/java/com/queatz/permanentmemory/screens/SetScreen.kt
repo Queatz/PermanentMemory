@@ -46,7 +46,9 @@ class SetScreen : Fragment() {
         setRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         itemAdapter = ItemAdapter({
-            app.on(DataManager::class).box(ItemModel::class).remove(it.objectBoxId)
+            app.on(ConfirmManager::class).confirm {
+                app.on(DataManager::class).box(ItemModel::class).remove(it.objectBoxId)
+            }
         }, {
             app.on(DataManager::class).box(ItemModel::class).put(ItemModel(set = set.objectBoxId, streak = 0))
 

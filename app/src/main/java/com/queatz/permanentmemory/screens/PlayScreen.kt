@@ -85,6 +85,7 @@ class PlayScreen : Fragment() {
         brainSample.set = item.set
         brainSample.item = item.objectBoxId
         brainSample.correct = when (isInverse) { true -> item.question false -> item.answer }.toLowerCase() == answer.trim().toLowerCase()
+        brainSample.inverse = isInverse
         app.on(DataManager::class).box(BrainSampleModel::class).put(brainSample)
 
         item.streak = when (brainSample.correct) { true -> item.streak + 1 false -> item.streak / 2 }
@@ -157,8 +158,10 @@ class PlayScreen : Fragment() {
             answerText.hint = subject.inverse
         }
 
-        setProgress.progress = app.on(ProgressManager::class).getProgress(set)
+        set.progress = app.on(ProgressManager::class).getProgress(set)
+        app.on(DataManager::class).box(SetModel::class).put(set)
         setProgress.applyColorFromProgress()
+        setProgress.progress = set.progress
     }
 
     override fun onDestroy() {

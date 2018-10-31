@@ -1,5 +1,6 @@
 package com.queatz.permanentmemory.screens
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -27,7 +28,15 @@ class HomeScreen : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        keepPlayingRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        keepPlayingRecyclerView.layoutManager = object : LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false) {
+            override fun requestChildRectangleOnScreen(parent: RecyclerView, child: View, rect: Rect, immediate: Boolean): Boolean {
+                return false
+            }
+
+            override fun requestChildRectangleOnScreen(parent: RecyclerView, child: View, rect: Rect, immediate: Boolean, focusedChildVisible: Boolean): Boolean {
+                return false
+            }
+        }
         keepPlayingRecyclerView.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
         val subjectAdapter = SetAdapter(
@@ -51,6 +60,7 @@ class HomeScreen : Fragment() {
             app.on(DataManager::class).box(ItemModel::class).get(it)?.let {
                 worldOfTheDay.text = it.question
                 wordOfTheDayProgress.progress = app.on(ProgressManager::class).getProgress(it)
+                wordOfTheDayProgress.applyColorFromProgress()
             }
         }
 

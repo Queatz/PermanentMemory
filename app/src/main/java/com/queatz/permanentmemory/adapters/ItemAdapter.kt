@@ -107,10 +107,10 @@ class ItemAdapter constructor(
 }
 
 class SetViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val percentLearnedButton = itemView.percentLearnedButton
-    val deleteButton = itemView.deleteButton
-    val questionText = itemView.questionText
-    val answerText = itemView.answerText
+    val percentLearnedButton = itemView.percentLearnedButton!!
+    val deleteButton = itemView.deleteButton!!
+    val questionText = itemView.questionText!!
+    val answerText = itemView.answerText!!
     lateinit var answerTextWatcher: TextWatcher
     lateinit var questionTextWatcher: TextWatcher
 }
