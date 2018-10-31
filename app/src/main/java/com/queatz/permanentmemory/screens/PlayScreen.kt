@@ -17,6 +17,8 @@ import kotlinx.android.synthetic.main.screen_play.*
 
 class PlayScreen : Fragment() {
 
+    private var isShowingIncorrectAnswer = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.screen_play, container, false)
     }
@@ -52,20 +54,6 @@ class PlayScreen : Fragment() {
             false
         }
 
-        on(PlayManager::class).onAnswer = {
-            if (it.brainSample.correct) {
-                correctIndicator.visibility = View.VISIBLE
-                correctIndicator.postDelayed({ correctIndicator.visibility = View.GONE }, 500)
-                on(PlayManager::class).next()
-            } else {
-                answerText.setText(when (it.isInverse) { true -> it.item.question false -> it.item.answer })
-                answerText.selectAll()
-                submitButton.setText(R.string.continue_text)
-                incorrectIndicator.visibility = View.VISIBLE
-                isShowingIncorrectAnswer = true
-            }
-        }
-
         on(PlayManager::class).onNext = {
             if (isShowingIncorrectAnswer) {
                 isShowingIncorrectAnswer = false
@@ -88,6 +76,20 @@ class PlayScreen : Fragment() {
             setProgress.applyColorFromProgress()
         }
 
+        on(PlayManager::class).onAnswer = {
+            if (it.brainSample.correct) {
+                correctIndicator.visibility = View.VISIBLE
+                correctIndicator.postDelayed({ correctIndicator.visibility = View.GONE }, 500)
+                on(PlayManager::class).next()
+            } else {
+                answerText.setText(when (it.isInverse) { true -> it.item.question false -> it.item.answer })
+                answerText.selectAll()
+                submitButton.setText(R.string.continue_text)
+                incorrectIndicator.visibility = View.VISIBLE
+                isShowingIncorrectAnswer = true
+            }
+        }
+
         on(PlayManager::class).next()
     }
 
@@ -98,8 +100,6 @@ class PlayScreen : Fragment() {
             on(PlayManager::class).submitAnswer(answerText.text.toString())
         }
     }
-
-    private var isShowingIncorrectAnswer = false
 
     override fun onDestroy() {
         onEnd()

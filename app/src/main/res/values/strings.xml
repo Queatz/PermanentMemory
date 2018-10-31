@@ -48,6 +48,9 @@
     <string name="you_cannot_undo">You cannot undo this action.</string>
     <string name="text">Text</string>
     <string name="flash_card">Flash card</string>
+    <string name="show_answer">Show answer</string>
+    <string name="wrong">Wrong</string>
+    <string name="right">Right!</string>
 
     <plurals name="num_cards">
         <item quantity="zero">No cards</item>

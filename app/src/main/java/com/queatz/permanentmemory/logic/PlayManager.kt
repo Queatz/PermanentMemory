@@ -16,8 +16,8 @@ class PlayManager : PoolMember() {
     private var isInverse = false
     private var isAlreadyLearned = false
 
-    lateinit var onAnswer: (AnswerResult) -> Unit
-    lateinit var onNext: (OnNextItem) -> Unit
+    var onAnswer: ((AnswerResult) -> Unit)? = null
+    var onNext: ((OnNextItem) -> Unit)? = null
 
     fun start(setId: Long) {
         set = app.on(DataManager::class).box(SetModel::class).get(setId) ?: return
@@ -27,11 +27,14 @@ class PlayManager : PoolMember() {
 
     fun submitAnswer(answer: String) {
         if (answer.isEmpty()) return
+        submitAnswer(when (isInverse) { true -> item.question false -> item.answer }.toLowerCase() == answer.trim().toLowerCase())
+    }
 
+    fun submitAnswer(correct: Boolean) {
         val brainSample = BrainSampleModel()
         brainSample.set = item.set
         brainSample.item = item.objectBoxId
-        brainSample.correct = when (isInverse) { true -> item.question false -> item.answer }.toLowerCase() == answer.trim().toLowerCase()
+        brainSample.correct = correct
         brainSample.inverse = isInverse
         app.on(DataManager::class).box(BrainSampleModel::class).put(brainSample)
 
@@ -59,7 +62,7 @@ class PlayManager : PoolMember() {
             isAlreadyLearned = false
         }
 
-        onAnswer.invoke(AnswerResult(brainSample, isInverse, item))
+        onAnswer?.invoke(AnswerResult(brainSample, isInverse, item))
     }
 
     fun next() {
@@ -85,7 +88,7 @@ class PlayManager : PoolMember() {
         set.progress = app.on(ProgressManager::class).getProgress(set)
         app.on(DataManager::class).box(SetModel::class).put(set)
 
-        onNext.invoke(OnNextItem(set.progress, isInverse, item, subject))
+        onNext?.invoke(OnNextItem(set.progress, isInverse, item, subject))
     }
 
 }

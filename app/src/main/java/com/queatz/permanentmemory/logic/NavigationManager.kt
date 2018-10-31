@@ -6,10 +6,7 @@ import com.queatz.permanentmemory.Extras
 import com.queatz.permanentmemory.models.ItemModel
 import com.queatz.permanentmemory.models.ItemModel_
 import com.queatz.permanentmemory.pool.PoolMember
-import com.queatz.permanentmemory.screens.HomeScreen
-import com.queatz.permanentmemory.screens.PlayScreen
-import com.queatz.permanentmemory.screens.SetScreen
-import com.queatz.permanentmemory.screens.SubjectScreen
+import com.queatz.permanentmemory.screens.*
 
 class NavigationManager : PoolMember() {
     lateinit var view: (Fragment, Boolean) -> Unit
@@ -39,7 +36,8 @@ class NavigationManager : PoolMember() {
             return
         }
 
-        val screen = PlayScreen()
+        val gameMode = on(SettingsManager::class).get().gameMode
+        val screen = when(gameMode) { GameMode.FLASH_CARD -> FlashCardScreen() else -> PlayScreen() }
         screen.arguments = Bundle()
         screen.arguments!!.putLong(Extras.ID, id)
         view.invoke(screen, true)
