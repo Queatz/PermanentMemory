@@ -20,6 +20,8 @@ class FlashCardScreen : Fragment() {
         return inflater.inflate(R.layout.screen_flash_card, container, false)
     }
 
+    private var pendingInk: Runnable? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val id = arguments?.getLong(Extras.ID) ?: return
         on(PlayManager::class).start(id)
@@ -35,17 +37,21 @@ class FlashCardScreen : Fragment() {
         on(PlayManager::class).onNext = {
             showAnswer(false)
 
-            if (it.isInverse) {
-                questionText.text = it.item.answer
-                answerText.text = it.item.question
-                questionTextHint.text = it.subject.inverse
-                answerTextHint.text = it.subject.name
-            } else {
-                questionText.text = it.item.question
-                answerText.text = it.item.answer
-                questionTextHint.text = it.subject.name
-                answerTextHint.text = it.subject.inverse
+            flashCardFlipView.removeCallbacks(pendingInk)
+            pendingInk = Runnable {
+                if (it.isInverse) {
+                    questionText.text = it.item.answer
+                    answerText.text = it.item.question
+                    questionTextHint.text = it.subject.inverse
+                    answerTextHint.text = it.subject.name
+                } else {
+                    questionText.text = it.item.question
+                    answerText.text = it.item.answer
+                    questionTextHint.text = it.subject.name
+                    answerTextHint.text = it.subject.inverse
+                }
             }
+            flashCardFlipView.postDelayed(pendingInk, 100)
 
             setProgress.progress = it.setProgress
             setProgress.applyColorFromProgress()
@@ -56,14 +62,20 @@ class FlashCardScreen : Fragment() {
 
     private fun showAnswer(show: Boolean) {
         if (show) {
-            flashCardFlipView.flipDuration = 400
-            flashCardFlipView.flipTheView()
+            if (!flashCardFlipView.isFrontSide) {
+                flashCardFlipView.flipDuration = 400
+                flashCardFlipView.flipTheView()
+            }
+
             submitButton.visibility = View.GONE
             submitCorrectButton.visibility = View.VISIBLE
             submitIncorrectButton.visibility = View.VISIBLE
         } else {
-            flashCardFlipView.flipDuration = 0
-            flashCardFlipView.flipTheView()
+            if (!flashCardFlipView.isBackSide) {
+                flashCardFlipView.flipDuration = 200
+                flashCardFlipView.flipTheView()
+            }
+
             submitButton.visibility = View.VISIBLE
             submitCorrectButton.visibility = View.GONE
             submitIncorrectButton.visibility = View.GONE
