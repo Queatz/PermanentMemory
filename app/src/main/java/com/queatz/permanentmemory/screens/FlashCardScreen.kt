@@ -21,6 +21,7 @@ class FlashCardScreen : Fragment() {
     }
 
     private var pendingInk: Runnable? = null
+    private var blockButtons = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val id = arguments?.getLong(Extras.ID) ?: return
@@ -54,14 +55,28 @@ class FlashCardScreen : Fragment() {
 
         on(PlayManager::class).start(id)
 
-        submitButton.setOnClickListener { showAnswer(true) }
-        submitCorrectButton.setOnClickListener { on(PlayManager::class).submitAnswer(true) }
-        submitIncorrectButton.setOnClickListener { on(PlayManager::class).submitAnswer(false) }
+        submitButton.setOnClickListener {
+            if (blockButtons) return@setOnClickListener
+            showAnswer(true)
+        }
+
+        submitCorrectButton.setOnClickListener {
+            if (blockButtons) return@setOnClickListener
+            on(PlayManager::class).submitAnswer(true)
+        }
+
+        submitIncorrectButton.setOnClickListener {
+            if (blockButtons) return@setOnClickListener
+            on(PlayManager::class).submitAnswer(false)
+        }
 
         on(PlayManager::class).next()
     }
 
     private fun showAnswer(show: Boolean) {
+        blockButtons = true
+        flashCardFlipView.setOnFlipListener { _, _ -> blockButtons = false }
+
         if (show) {
             if (!flashCardFlipView.isFrontSide) {
                 flashCardFlipView.flipDuration = 400
