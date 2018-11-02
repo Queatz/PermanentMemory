@@ -25,34 +25,6 @@ class PlayScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val id = arguments?.getLong(Extras.ID) ?: return
-        on(PlayManager::class).start(id)
-
-        submitButton.setOnClickListener { submitAnswer() }
-
-        answerText.setOnEditorActionListener { _, actionId, _ ->
-            when (actionId) {
-                EditorInfo.IME_ACTION_DONE -> {
-                    submitAnswer()
-                    true
-                }
-                else -> false
-            }
-        }
-
-        answerText.setOnKeyListener { _, keyCode, event ->
-            when (event.action) {
-                KeyEvent.ACTION_UP -> {
-                    when (keyCode) {
-                        KeyEvent.KEYCODE_ENTER -> {
-                            submitAnswer()
-                            return@setOnKeyListener true
-                        }
-                    }
-                }
-            }
-
-            false
-        }
 
         on(PlayManager::class).onNext = {
             if (isShowingIncorrectAnswer) {
@@ -88,6 +60,35 @@ class PlayScreen : Fragment() {
                 incorrectIndicator.visibility = View.VISIBLE
                 isShowingIncorrectAnswer = true
             }
+        }
+
+        on(PlayManager::class).start(id)
+
+        submitButton.setOnClickListener { submitAnswer() }
+
+        answerText.setOnEditorActionListener { _, actionId, _ ->
+            when (actionId) {
+                EditorInfo.IME_ACTION_DONE -> {
+                    submitAnswer()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        answerText.setOnKeyListener { _, keyCode, event ->
+            when (event.action) {
+                KeyEvent.ACTION_UP -> {
+                    when (keyCode) {
+                        KeyEvent.KEYCODE_ENTER -> {
+                            submitAnswer()
+                            return@setOnKeyListener true
+                        }
+                    }
+                }
+            }
+
+            false
         }
 
         on(PlayManager::class).next()

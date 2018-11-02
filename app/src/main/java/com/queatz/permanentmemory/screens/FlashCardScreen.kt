@@ -24,11 +24,6 @@ class FlashCardScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val id = arguments?.getLong(Extras.ID) ?: return
-        on(PlayManager::class).start(id)
-
-        submitButton.setOnClickListener { showAnswer(true) }
-        submitCorrectButton.setOnClickListener { on(PlayManager::class).submitAnswer(true) }
-        submitIncorrectButton.setOnClickListener { on(PlayManager::class).submitAnswer(false) }
 
         on(PlayManager::class).onAnswer = {
             on(PlayManager::class).next()
@@ -56,6 +51,12 @@ class FlashCardScreen : Fragment() {
             setProgress.progress = it.setProgress
             setProgress.applyColorFromProgress()
         }
+
+        on(PlayManager::class).start(id)
+
+        submitButton.setOnClickListener { showAnswer(true) }
+        submitCorrectButton.setOnClickListener { on(PlayManager::class).submitAnswer(true) }
+        submitIncorrectButton.setOnClickListener { on(PlayManager::class).submitAnswer(false) }
 
         on(PlayManager::class).next()
     }

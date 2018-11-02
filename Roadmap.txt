@@ -40,6 +40,11 @@ TODO - SMALL
 
 [ ] SM recycling view shouldn't scroll to focus
 
+[ ] Stars, 1, 2, 3 stars, bronze silver gold
+	[ ] 10 times (bronze)
+	[ ] 100 times (silver)
+	[ ] 500 times (gold)
+
 ENHANCE
 ====
 
