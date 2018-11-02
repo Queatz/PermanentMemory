@@ -10,4 +10,5 @@
     <color name="white">#FFFFFF</color>
     <color name="red">#F44336</color>
     <color name="gray">#aaaaaa</color>
+    <color name="gray_transp">#24000000</color>
 </resources>

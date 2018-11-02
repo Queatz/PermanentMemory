@@ -1,5 +1,8 @@
 package com.queatz.permanentmemory.screens
 
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.KeyEvent
@@ -9,6 +12,9 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import com.queatz.permanentmemory.Extras
 import com.queatz.permanentmemory.R
+import com.queatz.permanentmemory.app
+import com.queatz.permanentmemory.logic.ContextManager
+import com.queatz.permanentmemory.logic.NavigationManager
 import com.queatz.permanentmemory.logic.PlayManager
 import com.queatz.permanentmemory.logic.applyColorFromProgress
 import com.queatz.permanentmemory.pool.on
@@ -46,6 +52,11 @@ class PlayScreen : Fragment() {
 
             setProgress.progress = it.setProgress
             setProgress.applyColorFromProgress()
+
+            it.reviewProgress?.let {
+                reviewProgress.visibility = View.VISIBLE
+                reviewProgress.progress = it
+            }
         }
 
         on(PlayManager::class).onAnswer = {
@@ -62,7 +73,14 @@ class PlayScreen : Fragment() {
             }
         }
 
-        on(PlayManager::class).start(id)
+        if (!on(PlayManager::class).start(id)) {
+            AlertDialog.Builder(app.on(ContextManager::class).context)
+                    .setMessage(R.string.subject_missing)
+                    .setPositiveButton(R.string.bummer) { _: DialogInterface, _: Int -> }
+                    .show()
+            app.on(NavigationManager::class).fallback()
+            return
+        }
 
         submitButton.setOnClickListener { submitAnswer() }
 

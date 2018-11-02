@@ -15,14 +15,16 @@ class PlayManager : PoolMember() {
     private lateinit var item: ItemModel
     private var isInverse = false
     private var isAlreadyLearned = false
+    private val alreadyReviewed: MutableList<Long> = mutableListOf()
 
     var onAnswer: ((AnswerResult) -> Unit)? = null
     var onNext: ((OnNextItem) -> Unit)? = null
 
-    fun start(setId: Long) {
-        set = app.on(DataManager::class).box(SetModel::class).get(setId) ?: return
-        subject = app.on(DataManager::class).box(SubjectModel::class).get(set.subject) ?: return
+    fun start(setId: Long): Boolean {
+        set = app.on(DataManager::class).box(SetModel::class).get(setId) ?: return false
+        subject = app.on(DataManager::class).box(SubjectModel::class).get(set.subject) ?: return false
         isAlreadyLearned = app.on(ProgressManager::class).getProgress(set) >= 100
+        return true
     }
 
     fun submitAnswer(answer: String) {
@@ -66,13 +68,37 @@ class PlayManager : PoolMember() {
         if (!isAlreadyLearned) {
             itemsQuery.less(ItemModel_.streak, 10)
             itemsQuery.orderDesc(ItemModel_.streak)
+        } else {
+            itemsQuery.notIn(ItemModel_.objectBoxId, alreadyReviewed.toLongArray())
         }
         val items = itemsQuery.build().find()
 
-        if (items.isEmpty()) return
+        if (items.isEmpty()) {
+            if (isAlreadyLearned && alreadyReviewed.isNotEmpty()) {
+                alreadyReviewed.clear()
+                next()
+                AlertDialog.Builder(app.on(ContextManager::class).context)
+                        .setTitle(R.string.review_complete)
+                        .setMessage(R.string.review_complete_message)
+                        .setPositiveButton(R.string.review_again) { _: DialogInterface, _: Int -> }
+                        .setNegativeButton(R.string.return_to_home) { _: DialogInterface, _: Int ->
+                            app.on(NavigationManager::class).fallback()
+                        }
+                        .show()
+            }
+            return
+        }
 
         val rnd = Random().nextInt(items.size)
         val nextItem = items[if (isAlreadyLearned) rnd else rnd % 10]
+
+        val reviewProgress: Int?
+        if (isAlreadyLearned) {
+            reviewProgress = getReviewProgress()
+            alreadyReviewed.add(nextItem.objectBoxId)
+        } else {
+            reviewProgress = null
+        }
 
         isInverse = when (app.on(SettingsManager::class).get().playMode) {
             PlayMode.RANDOM -> if (::item.isInitialized && nextItem.objectBoxId == item.objectBoxId) { !isInverse } else { Random().nextInt(2) == 0 }
@@ -85,9 +111,15 @@ class PlayManager : PoolMember() {
         set.progress = app.on(ProgressManager::class).getProgress(set)
         app.on(DataManager::class).box(SetModel::class).put(set)
 
-        onNext?.invoke(OnNextItem(set.progress, isInverse, item, subject))
+        onNext?.invoke(OnNextItem(set.progress, reviewProgress, isInverse, item, subject))
     }
 
+    private fun getReviewProgress() = ((alreadyReviewed.size.toFloat() / app.on(DataManager::class)
+            .box(ItemModel::class)
+            .query()
+            .equal(ItemModel_.set, set.objectBoxId)
+            .build()
+            .count().toFloat()) * 100).toInt()
 }
 
 data class AnswerResult constructor(
@@ -98,6 +130,7 @@ data class AnswerResult constructor(
 
 data class OnNextItem constructor(
         val setProgress: Int,
+        val reviewProgress: Int?,
         val isInverse: Boolean,
         val item: ItemModel,
         val subject: SubjectModel

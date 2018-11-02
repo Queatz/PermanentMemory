@@ -28,6 +28,8 @@
     <string name="send_feedback">Send feedback</string>
     <string name="return_to_home">Return to home</string>
     <string name="learning_complete">Learning complete!</string>
+    <string name="review_complete">Review complete!</string>
+    <string name="review_complete_message">You\'ve successfully reviewed everything in this set!</string>
     <string name="learning_complete_message">You\'ve successfully learned everything in this set!</string>
     <string name="continue_text">Continue</string>
     <string name="play_mode">Play mode</string>
@@ -51,6 +53,9 @@
     <string name="show_answer">Show answer</string>
     <string name="wrong">Wrong</string>
     <string name="right">Right!</string>
+    <string name="review_again">Review again</string>
+    <string name="subject_missing">The subject this set belongs to cannot be found.</string>
+    <string name="bummer">Bummer</string>
 
     <plurals name="num_cards">
         <item quantity="zero">No cards</item>
