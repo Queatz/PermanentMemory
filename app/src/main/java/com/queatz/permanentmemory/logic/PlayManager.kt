@@ -58,10 +58,6 @@ class PlayManager : PoolMember() {
                     .show()
         }
 
-        if (!brainSample.correct) {
-            isAlreadyLearned = false
-        }
-
         onAnswer?.invoke(AnswerResult(brainSample, isInverse, item))
     }
 
@@ -75,7 +71,8 @@ class PlayManager : PoolMember() {
 
         if (items.isEmpty()) return
 
-        val nextItem = items[Random().nextInt(items.size) % 10]
+        val rnd = Random().nextInt(items.size)
+        val nextItem = items[if (isAlreadyLearned) rnd else rnd % 10]
 
         isInverse = when (app.on(SettingsManager::class).get().playMode) {
             PlayMode.RANDOM -> if (::item.isInitialized && nextItem.objectBoxId == item.objectBoxId) { !isInverse } else { Random().nextInt(2) == 0 }
