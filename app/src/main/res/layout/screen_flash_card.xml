@@ -72,6 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/padDouble"
                     android:layout_gravity="center_horizontal|bottom"
+                    android:gravity="center_horizontal"
                     tools:text="Tiếng Việt"
                     android:textColor="@color/gray"
                     android:textAppearance="?android:textAppearanceMedium" />
@@ -82,6 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/pad"
                     android:layout_gravity="center"
+                    android:gravity="center_horizontal"
                     tools:text="Giờ"
                     android:textAppearance="?android:textAppearanceLarge"
                     android:textStyle="bold" />
