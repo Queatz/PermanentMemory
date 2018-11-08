@@ -55,7 +55,7 @@ TODO - SMALL
 	[ ] Wrong words reset the reminder clock + in progress set
 	[ ] needs review 1 day later, 2 days after that, 4 days, etc
 [ ] MD Show complete with each variant (overlay or stacked bars / or in stats)
-[ ] 🔴2️⃣ MD Practice mode (list of flash cards, tap to reveal)
+
 
 [ ] SM recycling view shouldn't scroll to focus
 
@@ -79,6 +79,7 @@ TODO - SMALL
 DONE
 ====
 
+[x] 🔴2️⃣ MD Practice mode (list of flash cards, tap to reveal)
 [x] 🔴1️⃣ Game mode: Text, flashcards
 [x] A way to review set (longpress -> review)
 [?] when new card update number on set

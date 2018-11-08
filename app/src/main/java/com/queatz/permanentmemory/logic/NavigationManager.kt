@@ -45,7 +45,10 @@ class NavigationManager : PoolMember() {
     }
 
     fun practiceSet(id: Long) {
-
+        val screen = PracticeScreen()
+        screen.arguments = Bundle()
+        screen.arguments!!.putLong(Extras.ID, id)
+        view.invoke(screen, true)
     }
 
     fun fallback() {
