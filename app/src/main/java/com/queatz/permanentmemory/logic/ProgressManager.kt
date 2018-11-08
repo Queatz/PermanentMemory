@@ -4,6 +4,7 @@ import com.queatz.permanentmemory.app
 import com.queatz.permanentmemory.models.*
 import com.queatz.permanentmemory.pool.PoolMember
 import com.queatz.permanentmemory.pool.on
+import java.util.*
 import kotlin.math.min
 
 class ProgressManager : PoolMember() {
@@ -37,5 +38,15 @@ class ProgressManager : PoolMember() {
 
     fun getProgress(itemModel: ItemModel): Int {
         return min(100, itemModel.streak.toInt() * 10)
+    }
+
+    fun update(set: SetModel) {
+        set.updated = Date()
+        set.progress = app.on(ProgressManager::class).getProgress(set)
+        app.on(DataManager::class).box(SetModel::class).put(set)
+
+        val subject = on(DataManager::class).box(SubjectModel::class).get(set.subject)
+        subject.updated = Date()
+        app.on(DataManager::class).box(SubjectModel::class).put(subject)
     }
 }

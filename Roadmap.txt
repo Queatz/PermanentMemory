@@ -26,6 +26,14 @@ TODO - MEDIUM
 TODO - SMALL
 ====
 
+[ ] Jacob learns best by being seriously challenged to learn a language
+[ ] add word to multiple sets
+[ ] select all to review, review set
+[ ] Vietnamese girl ask questions / do thing with her
+[ ] Jacob learning process: Discover -> Use -> See Result -> Repeat
+[ ] 
+
+
 [ ] 🔴1️⃣ Game mode: Text, flashcards, multiple choice
 [ ] write description for Play Store
 
@@ -35,6 +43,7 @@ TODO - SMALL
 	[ ] 24h later, 3 days, 7 days, 14 days, 30, 60, 90 days
 	[ ] Must get the words correct once
 	[ ] Wrong words reset the reminder clock + in progress set
+	[ ] needs review 1 day later, 2 days after that, 4 days, etc
 [ ] MD Show complete with each variant (overlay or stacked bars / or in stats)
 [ ] 🔴2️⃣ MD Practice mode (list of flash cards, tap to reveal)
 
@@ -44,6 +53,13 @@ TODO - SMALL
 	[ ] 10 times (bronze)
 	[ ] 100 times (silver)
 	[ ] 500 times (gold)
+
+[ ] Quiz at end using all words
+[ ] A way to review set (longpress -> review)
+
+[ ] ability to view word of the day inverse (auto switch 10s)
+[ ] khi mới card update number on set
+[ ] "4 words need review"
 
 ENHANCE
 ====
@@ -56,6 +72,7 @@ ENHANCE
 [ ] MD use Google speak API choose language + autoplay
 [ ] MD Real marketing screenshots
 [ ] Final quiz with full sentances? / timed? Both normal and inverse
+	[ ] Conversation / question / answer
 
 DONE
 ====

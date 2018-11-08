@@ -48,6 +48,7 @@ class SetScreen : Fragment() {
         itemAdapter = ItemAdapter({
             app.on(ConfirmManager::class).confirm {
                 app.on(DataManager::class).box(ItemModel::class).remove(it.objectBoxId)
+                app.on(ProgressManager::class).update(set)
             }
         }, {
             app.on(DataManager::class).box(ItemModel::class).put(ItemModel(set = set.objectBoxId, streak = 0))
@@ -59,8 +60,7 @@ class SetScreen : Fragment() {
                 app.on(DataManager::class).box(SubjectModel::class).put(it)
             }
 
-            set.updated = Date()
-            app.on(DataManager::class).box(SetModel::class).put(set)
+            app.on(ProgressManager::class).update(set)
         })
 
         setRecyclerView.adapter = itemAdapter
