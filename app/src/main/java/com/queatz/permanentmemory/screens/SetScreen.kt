@@ -51,7 +51,7 @@ class SetScreen : Fragment() {
                 app.on(ProgressManager::class).update(set)
             }
         }, {
-            app.on(DataManager::class).box(ItemModel::class).put(ItemModel(set = set.objectBoxId, streak = 0))
+            app.on(DataManager::class).box(ItemModel::class).put(ItemModel(set = set.objectBoxId))
 
             val subject = app.on(DataManager::class).box(SubjectModel::class).get(set.subject)
 

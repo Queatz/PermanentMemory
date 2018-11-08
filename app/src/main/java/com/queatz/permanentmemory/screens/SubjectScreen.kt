@@ -49,6 +49,9 @@ class SubjectScreen : Fragment() {
 
         setAdapter = SetAdapter(
                 { app.on(NavigationManager::class).playSet(it.objectBoxId) },
+                { app.on(NavigationManager::class).playSet(it.objectBoxId, review = true) },
+                { app.on(NavigationManager::class).playSet(it.objectBoxId, review = true) },
+                { app.on(NavigationManager::class).practiceSet(it.objectBoxId) },
                 { app.on(NavigationManager::class).editSet(it.objectBoxId) },
                 {
                     val setId = app.on(DataManager::class).box(SetModel::class).put(SetModel(subject = subject.objectBoxId, name = "New set"))

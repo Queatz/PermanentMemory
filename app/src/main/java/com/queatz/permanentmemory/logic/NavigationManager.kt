@@ -25,7 +25,7 @@ class NavigationManager : PoolMember() {
         view.invoke(screen, true)
     }
 
-    fun playSet(id: Long) {
+    fun playSet(id: Long, review: Boolean = false) {
         val itemCount = on(DataManager::class).box(ItemModel::class).query()
                 .equal(ItemModel_.set, id)
                 .build()
@@ -40,7 +40,12 @@ class NavigationManager : PoolMember() {
         val screen = when(gameMode) { GameMode.FLASH_CARD -> FlashCardScreen() else -> PlayScreen() }
         screen.arguments = Bundle()
         screen.arguments!!.putLong(Extras.ID, id)
+        screen.arguments!!.putBoolean(Extras.ACTIVITY, review)
         view.invoke(screen, true)
+    }
+
+    fun practiceSet(id: Long) {
+
     }
 
     fun fallback() {

@@ -20,10 +20,10 @@ class PlayManager : PoolMember() {
     var onAnswer: ((AnswerResult) -> Unit)? = null
     var onNext: ((OnNextItem) -> Unit)? = null
 
-    fun start(setId: Long): Boolean {
+    fun start(setId: Long, review: Boolean = false): Boolean {
         set = app.on(DataManager::class).box(SetModel::class).get(setId) ?: return false
         subject = app.on(DataManager::class).box(SubjectModel::class).get(set.subject) ?: return false
-        isAlreadyLearned = app.on(ProgressManager::class).getProgress(set) >= 100
+        isAlreadyLearned = review || app.on(ProgressManager::class).getProgress(set) >= 100
         return true
     }
 
@@ -41,6 +41,12 @@ class PlayManager : PoolMember() {
         app.on(DataManager::class).box(BrainSampleModel::class).put(brainSample)
 
         item.streak = when (brainSample.correct) { true -> item.streak + 1 false -> item.streak / 2 }
+        if (item.streak >= 10) {
+            item.score++
+            item.reviewed = Date()
+        } else if (!brainSample.correct) {
+            item.score--
+        }
         app.on(DataManager::class).box(ItemModel::class).put(item)
 
         set.updated = Date()

@@ -1,6 +1,7 @@
 package com.queatz.permanentmemory.models
 
 import io.objectbox.annotation.Entity
+import java.util.*
 
 @Entity
 data class ItemModel(
@@ -8,5 +9,6 @@ data class ItemModel(
         var score: Long = 0,
         var question: String = "",
         var answer: String = "",
-        var streak: Long = 0
+        var streak: Long = 0,
+        var reviewed: Date = Date(0)
 ) : BaseModel()

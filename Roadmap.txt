@@ -1,3 +1,15 @@
+ENHANCE
+====
+
+[ ] MD search (and locate) word
+[ ] XL record auto play audio
+[ ] XL multiple choice sets (optional, it's for sentences)
+[ ] MD subtle sounds (use ubuntu sounds)
+[ ] LG world map learning vietnamese (learning market, votes)
+[ ] MD use Google speak API choose language + autoplay
+[ ] MD Real marketing screenshots
+[ ] Final quiz with full sentances? / timed? Both normal and inverse
+	[ ] Conversation / question / answer
 
 TODO - MEDIUM
 ====
@@ -27,14 +39,12 @@ TODO - SMALL
 ====
 
 [ ] Jacob learns best by being seriously challenged to learn a language
-[ ] add word to multiple sets
+	[ ] Jacob learning process: Discover -> Use -> See Result -> Repeat
+	[ ] Vietnamese girl ask questions / do thing with her
+[ ] add word to multiple sets (add by searching)
 [ ] select all to review, review set
-[ ] Vietnamese girl ask questions / do thing with her
-[ ] Jacob learning process: Discover -> Use -> See Result -> Repeat
-[ ] 
+	[ ] Review specific cards in subject/sets
 
-
-[ ] 🔴1️⃣ Game mode: Text, flashcards, multiple choice
 [ ] write description for Play Store
 
 [ ] 🔴2️⃣ MD Review set button, try every word once (shows up once completed)
@@ -55,28 +65,23 @@ TODO - SMALL
 	[ ] 500 times (gold)
 
 [ ] Quiz at end using all words
-[ ] A way to review set (longpress -> review)
-
 [ ] ability to view word of the day inverse (auto switch 10s)
-[ ] khi mới card update number on set
 [ ] "4 words need review"
 
-ENHANCE
-====
+[ ] 
+[ ] 
+[ ] 
+[ ] 
+[ ] 
+[ ] 
 
-[ ] MD search (and locate) word
-[ ] XL record auto play audio
-[ ] XL multiple choice sets (optional, it's for sentences)
-[ ] MD subtle sounds (use ubuntu sounds)
-[ ] LG world map learning vietnamese (learning market, votes)
-[ ] MD use Google speak API choose language + autoplay
-[ ] MD Real marketing screenshots
-[ ] Final quiz with full sentances? / timed? Both normal and inverse
-	[ ] Conversation / question / answer
 
 DONE
 ====
 
+[x] 🔴1️⃣ Game mode: Text, flashcards
+[x] A way to review set (longpress -> review)
+[?] when new card update number on set
 [x] play screen 1st time red bar bug
 [x] Scroll messed up on home screen on load
 [x] Sets should be sorted by in progress, not started, complete

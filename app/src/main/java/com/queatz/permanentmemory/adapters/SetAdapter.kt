@@ -19,6 +19,9 @@ import kotlinx.android.synthetic.main.item_set.view.*
 
 class SetAdapter(
         private val onClickListener: (SetModel) -> Unit,
+        private val onLongClickListener: (SetModel) -> Unit,
+        private val onReviewClickListener: (SetModel) -> Unit,
+        private val onPracticeClickListener: (SetModel) -> Unit,
         private val onMoreClickListener: (SetModel) -> Unit,
         private val onActionClickListener: () -> Unit,
         var isActionVisible: Boolean = true,
@@ -59,6 +62,7 @@ class SetAdapter(
                 val set = items[position]
                 val progress = app.on(ProgressManager::class).getProgress(set)
                 viewHolder.cardView.setOnClickListener { onClickListener.invoke(set) }
+                viewHolder.cardView.setOnLongClickListener { onLongClickListener.invoke(set); true }
                 viewHolder.moreButton.setOnClickListener { onMoreClickListener.invoke(set) }
                 viewHolder.setName.text = items[position].name
                 viewHolder.setProgress.progress = progress
@@ -78,6 +82,9 @@ class SetAdapter(
                 } else {
                     viewHolder.subjectName.text = resources.getQuantityString(R.plurals.num_cards, setCardCount, setCardCount)
                 }
+
+                viewHolder.reviewButton.setOnClickListener { onReviewClickListener.invoke(set) }
+                viewHolder.practiceButton.setOnClickListener { onPracticeClickListener.invoke(set) }
 
                 when {
                     progress == 0 -> {
@@ -111,4 +118,6 @@ class SubjectViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(it
     val setProgress = itemView.setProgress!!
     val setStatus = itemView.setStatus!!
     val subjectName = itemView.subjectName!!
+    val reviewButton = itemView.reviewButton!!
+    val practiceButton = itemView.practiceButton!!
 }

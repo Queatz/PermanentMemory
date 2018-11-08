@@ -95,10 +95,37 @@
                 android:layout_marginEnd="@dimen/padDouble"
                 android:layout_marginBottom="@dimen/padDouble"
                 android:indeterminate="false"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/setName" />
+
+            <Button style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/reviewButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/setProgress"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:padding="@dimen/padDouble"
+                android:gravity="center_horizontal"
+                android:text="Review"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textAllCaps="true"
+                android:textColor="@color/colorAccent"/>
+
+            <Button style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/practiceButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/setProgress"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/reviewButton"
+                android:padding="@dimen/padDouble"
+                android:gravity="center_horizontal"
+                android:text="Practice"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textAllCaps="true"
+                android:textColor="@color/colorAccent"/>
 
         </android.support.constraint.ConstraintLayout>
 

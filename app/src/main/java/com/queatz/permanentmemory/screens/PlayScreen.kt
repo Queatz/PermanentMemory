@@ -2,7 +2,6 @@ package com.queatz.permanentmemory.screens
 
 import android.app.AlertDialog
 import android.content.DialogInterface
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.KeyEvent
@@ -31,6 +30,7 @@ class PlayScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val id = arguments?.getLong(Extras.ID) ?: return
+        val review = arguments?.getBoolean(Extras.ACTIVITY) ?: false
 
         on(PlayManager::class).onNext = {
             if (isShowingIncorrectAnswer) {
@@ -73,7 +73,7 @@ class PlayScreen : Fragment() {
             }
         }
 
-        if (!on(PlayManager::class).start(id)) {
+        if (!on(PlayManager::class).start(id, review)) {
             AlertDialog.Builder(app.on(ContextManager::class).context)
                     .setMessage(R.string.subject_missing)
                     .setPositiveButton(R.string.bummer) { _: DialogInterface, _: Int -> }

@@ -30,6 +30,7 @@ class FlashCardScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val id = arguments?.getLong(Extras.ID) ?: return
+        val review = arguments?.getBoolean(Extras.ACTIVITY) ?: false
 
         on(PlayManager::class).onAnswer = {
             on(PlayManager::class).next()
@@ -63,7 +64,7 @@ class FlashCardScreen : Fragment() {
             }
         }
 
-        if (!on(PlayManager::class).start(id)) {
+        if (!on(PlayManager::class).start(id, review)) {
             AlertDialog.Builder(app.on(ContextManager::class).context)
                     .setMessage(R.string.subject_missing)
                     .setPositiveButton(R.string.bummer) { _: DialogInterface, _: Int -> }
