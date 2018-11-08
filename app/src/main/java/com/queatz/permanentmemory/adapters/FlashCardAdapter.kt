@@ -32,12 +32,16 @@ class FlashCardAdapter constructor(
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(viewHolder: FlashCardViewHolder, position: Int) {
-        val isInverse = when (playMode) {
+        var isInverse = when (playMode) {
             PlayMode.RANDOM -> Random().nextBoolean()
-                PlayMode.NORMAL -> false
-                PlayMode.INVERSE -> true
+            PlayMode.NORMAL -> false
+            PlayMode.INVERSE -> true
         }
         val item = items[position]
+
+        if (viewHolder.flashCardFlipView.isBackSide) {
+            isInverse = !isInverse
+        }
 
         if (isInverse) {
             viewHolder.questionText.text = item.question

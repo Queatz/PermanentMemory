@@ -1,7 +1,7 @@
 ENHANCE
 ====
 
-[ ] MD search (and locate) word
+[ ] 🔴 MD search (and locate) word
 [ ] XL record auto play audio
 [ ] XL multiple choice sets (optional, it's for sentences)
 [ ] MD subtle sounds (use ubuntu sounds)
@@ -10,6 +10,7 @@ ENHANCE
 [ ] MD Real marketing screenshots
 [ ] Final quiz with full sentances? / timed? Both normal and inverse
 	[ ] Conversation / question / answer
+	[ ] Quiz at end using all words
 
 TODO - MEDIUM
 ====
@@ -22,12 +23,12 @@ TODO - MEDIUM
 	[ ] Keep playing
 
 [ ] MD settings area
-	[ ] streak length
-	[ ] penalty points
-	[ ] days to wait after completeing a set to refresh memory
+	[ ] streak length (ai)
+	[ ] penalty points (ai)
+	[ ] days to wait after completeing a set to refresh memory (ai)
 	[ ] Calibrate number of words you can keep in your head (used for implicit cycles)
 	[ ] tips on organizing
-	[ ] dark mode (on/off/auto)
+	[ ] 🔴 dark mode (on/off/auto)
 	[ ] Import into set from CSV
 	[x] export as json/import as json ->
 		permanent_memory_all_subjects.json
@@ -57,16 +58,14 @@ TODO - SMALL
 [ ] MD Show complete with each variant (overlay or stacked bars / or in stats)
 
 
-[ ] SM recycling view shouldn't scroll to focus
-
-[ ] Stars, 1, 2, 3 stars, bronze silver gold
+[ ] 🔴 Stars, 1, 2, 3 stars, bronze silver gold
 	[ ] 10 times (bronze)
 	[ ] 100 times (silver)
 	[ ] 500 times (gold)
 
-[ ] Quiz at end using all words
-[ ] ability to view word of the day inverse (auto switch 10s)
-[ ] "4 words need review"
+[ ] 🔴 ability to view word of the day inverse (auto switch 10s)
+[ ] 🔴 "4 words need review"
+[ ] 🔴 Pin set to top
 
 [ ] 
 [ ] 
@@ -79,6 +78,7 @@ TODO - SMALL
 DONE
 ====
 
+[x] SM recycling view shouldn't scroll to focus
 [x] 🔴2️⃣ MD Practice mode (list of flash cards, tap to reveal)
 [x] 🔴1️⃣ Game mode: Text, flashcards
 [x] A way to review set (longpress -> review)
