@@ -27,8 +27,10 @@ TODO - MEDIUM
 	[ ] penalty points (ai)
 	[ ] days to wait after completeing a set to refresh memory (ai)
 	[ ] Calibrate number of words you can keep in your head (used for implicit cycles)
+		[ ] See forget-modeling below
 	[ ] tips on organizing
 	[ ] 🔴 dark mode (on/off/auto)
+	[ ] 🔴 full screen mode hide status and back then
 	[ ] Import into set from CSV
 	[x] export as json/import as json ->
 		permanent_memory_all_subjects.json
@@ -36,12 +38,30 @@ TODO - MEDIUM
 [ ] LG progress history screen per set+subject
 	[ ] Vert menu (Progress, Edit, Archive)
 
+
+TODO - PHILOSPHY
+====
+
+
+[ ] it's easy to memorize things that you see in a million different spots
+[ ] find a way to make it repeatable to learn one word perfectly forever
+[ ] 🔴 do not move forward if you got the last word wrong, you must get it right before moving forward
+	[ ] scale back mode, 2 perfect, then three, etc
+[ ] Forget-modeling to determine numbers, based off how quickly you forgot things, based off getting something wrong after getting it right and the time since you got it right
+[ ] 🔴 Jacob learns best by being seriously challenged to learn a language
+	[ ] Jacob learning process: Discover -> Use -> See Result -> Repeat
+
 TODO - SMALL
 ====
 
-[ ] Jacob learns best by being seriously challenged to learn a language
-	[ ] Jacob learning process: Discover -> Use -> See Result -> Repeat
-	[ ] Vietnamese girl ask questions / do thing with her
+[ ] 💠 release again
+[ ] 💠 after reviewing is complete switch to play mode to complete the missed words
+	[ ] 💠 Also update button action text to reflect actual action for specific sets
+[ ] 💠 disappearing mode, the word disappears after one second before you guess
+[ ] 💠 practice timer, on off in settings
+
+
+[ ] Vietnamese girl ask questions / do thing with her
 [ ] add word to multiple sets (add by searching)
 [ ] select all to review, review set
 	[ ] Review specific cards in subject/sets
@@ -49,30 +69,25 @@ TODO - SMALL
 [ ] write description for Play Store
 
 [ ] 🔴2️⃣ MD Review set button, try every word once (shows up once completed)
-	[ ] Words have review date on them
-	[ ] Set needs review if any words need review in the set
+	[ ] 🔴 Words have to-review date on them
+	[ ] 🔴 Set needs review if any words need review in the set
 	[ ] 24h later, 3 days, 7 days, 14 days, 30, 60, 90 days
 	[ ] Must get the words correct once
 	[ ] Wrong words reset the reminder clock + in progress set
 	[ ] needs review 1 day later, 2 days after that, 4 days, etc
+	[ ] Due for review time
 [ ] MD Show complete with each variant (overlay or stacked bars / or in stats)
-
+[ ] class mode, schedule reviews on specific days of the week and month
 
 [ ] 🔴 Stars, 1, 2, 3 stars, bronze silver gold
 	[ ] 10 times (bronze)
 	[ ] 100 times (silver)
 	[ ] 500 times (gold)
+	[ ] A->B 1 star, B->A Another star
 
 [ ] 🔴 ability to view word of the day inverse (auto switch 10s)
 [ ] 🔴 "4 words need review"
 [ ] 🔴 Pin set to top
-
-[ ] 
-[ ] 
-[ ] 
-[ ] 
-[ ] 
-[ ] 
 
 
 DONE

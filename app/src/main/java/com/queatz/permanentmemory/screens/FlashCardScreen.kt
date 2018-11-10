@@ -61,7 +61,7 @@ class FlashCardScreen : Fragment() {
             it.reviewProgress?.let {
                 reviewProgress.visibility = View.VISIBLE
                 reviewProgress.progress = it
-            }
+            } ?: run { reviewProgress.visibility = View.GONE }
         }
 
         if (!on(PlayManager::class).start(id, review)) {
