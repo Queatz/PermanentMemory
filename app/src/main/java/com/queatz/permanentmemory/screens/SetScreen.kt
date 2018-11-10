@@ -38,7 +38,8 @@ class SetScreen : Fragment() {
                 .subscribe()
                 .on(AndroidScheduler.mainThread())
                 .observer {
-                    it[0]?.let {
+                    if (it.isEmpty()) return@observer
+                    it[0].let {
                         set = it
                         update()
                     }

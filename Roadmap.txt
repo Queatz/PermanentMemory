@@ -29,7 +29,6 @@ TODO - MEDIUM
 	[ ] Calibrate number of words you can keep in your head (used for implicit cycles)
 		[ ] See forget-modeling below
 	[ ] tips on organizing
-	[.] 🔴 dark mode (on/off/auto)
 	[ ] 🔴 full screen mode hide status and back then
 	[ ] Import into set from CSV
 
@@ -88,6 +87,7 @@ TODO - SMALL
 DONE
 ====
 
+[x] 🔴 dark mode (on/off)
 	[x] export as json/import as json ->
 		permanent_memory_all_subjects.json
 [x] 💠 after reviewing is complete switch to play mode to complete the missed words
