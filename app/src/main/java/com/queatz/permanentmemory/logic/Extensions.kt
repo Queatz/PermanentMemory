@@ -11,5 +11,5 @@ fun ProgressBar.applyColorFromProgress() {
     if (progress < 100)
         progressDrawable.colorFilter = null
     else
-        progressDrawable.setColorFilter(resources.getColor(R.color.green), PorterDuff.Mode.MULTIPLY)
+        progressDrawable.setColorFilter(resources.getColor(R.color.green), PorterDuff.Mode.SRC)
 }

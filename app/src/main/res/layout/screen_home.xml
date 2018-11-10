@@ -34,6 +34,7 @@
             android:text="@string/play_mode"
             android:textAllCaps="true"
             android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="?attr/defaultTextColor"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -132,6 +133,7 @@
             android:text="@string/word_of_the_day"
             android:textAllCaps="true"
             android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="?attr/defaultTextColor"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -144,6 +146,7 @@
             android:gravity="center_horizontal"
             android:padding="@dimen/pad"
             android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="?attr/defaultTextColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/worldOfTheDayHeader"
@@ -153,11 +156,12 @@
             android:id="@+id/wordOfTheDayProgress"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="4dp"
             android:layout_marginStart="@dimen/pad"
             android:layout_marginEnd="@dimen/pad"
             android:layout_marginBottom="@dimen/pad"
             android:indeterminate="false"
+            android:progressDrawable="?attr/defaultProgressDrawable"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/worldOfTheDay"
@@ -174,6 +178,7 @@
             android:textAllCaps="true"
             android:textAppearance="?android:textAppearanceSmall"
             android:textStyle="bold"
+            android:textColor="?attr/defaultTextColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wordOfTheDayProgress" />
@@ -188,6 +193,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/keepPlaying" />
 
+        <Switch
+            android:id="@+id/darkModeSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padDouble"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/keepPlayingRecyclerView"
+            android:switchPadding="@dimen/padDouble"
+            android:textColor="?attr/defaultTextColor"
+            android:text="@string/enable_night_mode" />
+
         <Button
             android:id="@+id/exportButton"
             style="@style/Widget.AppCompat.Button.Borderless"
@@ -195,7 +212,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/keepPlayingRecyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/darkModeSwitch"
             android:layout_marginTop="@dimen/padDouble"
             android:gravity="center_horizontal"
             android:padding="@dimen/padDouble"

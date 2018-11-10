@@ -13,6 +13,7 @@ import com.queatz.permanentmemory.adapters.FlashCardAdapter
 import com.queatz.permanentmemory.app
 import com.queatz.permanentmemory.logic.DataManager
 import com.queatz.permanentmemory.logic.SettingsManager
+import com.queatz.permanentmemory.logic.ThemeManager
 import com.queatz.permanentmemory.models.ItemModel
 import com.queatz.permanentmemory.models.ItemModel_
 import com.queatz.permanentmemory.models.SetModel
@@ -26,9 +27,10 @@ class PracticeScreen : Fragment() {
     private lateinit var set: SetModel
     private lateinit var subject: SubjectModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.screen_practice, container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
+            app.on(ThemeManager::class)
+                    .inflatorWithThemeFromSettings(this, inflater)
+                    .inflate(R.layout.screen_practice, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val id = arguments?.getLong(Extras.ID) ?: return

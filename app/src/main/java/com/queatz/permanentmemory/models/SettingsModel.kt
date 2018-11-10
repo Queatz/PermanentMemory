@@ -15,7 +15,8 @@ data class SettingsModel(
         @Convert(converter = PlayModeConverter::class, dbType = String::class)
         var playMode: PlayMode = PlayMode.RANDOM,
         @Convert(converter = GameModeConverter::class, dbType = String::class)
-        var gameMode: GameMode = GameMode.TEXT
+        var gameMode: GameMode = GameMode.TEXT,
+        var darkMode: Boolean = false
 ) : BaseModel()
 
 class PlayModeConverter : PropertyConverter<PlayMode, String> {

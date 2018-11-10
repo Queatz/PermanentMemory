@@ -12,10 +12,7 @@ import android.view.inputmethod.EditorInfo
 import com.queatz.permanentmemory.Extras
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.app
-import com.queatz.permanentmemory.logic.ContextManager
-import com.queatz.permanentmemory.logic.NavigationManager
-import com.queatz.permanentmemory.logic.PlayManager
-import com.queatz.permanentmemory.logic.applyColorFromProgress
+import com.queatz.permanentmemory.logic.*
 import com.queatz.permanentmemory.pool.on
 import com.queatz.permanentmemory.pool.onEnd
 import kotlinx.android.synthetic.main.screen_play.*
@@ -24,9 +21,10 @@ class PlayScreen : Fragment() {
 
     private var isShowingIncorrectAnswer = false
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.screen_play, container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
+            app.on(ThemeManager::class)
+                    .inflatorWithThemeFromSettings(this, inflater)
+                    .inflate(R.layout.screen_play, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val id = arguments?.getLong(Extras.ID) ?: return

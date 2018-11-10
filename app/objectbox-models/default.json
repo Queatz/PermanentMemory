@@ -145,7 +145,7 @@
     },
     {
       "id": "5:4755326001039344435",
-      "lastPropertyId": "9:1152829649328730822",
+      "lastPropertyId": "10:3061769488643192640",
       "name": "SettingsModel",
       "properties": [
         {
@@ -179,6 +179,10 @@
         {
           "id": "9:1152829649328730822",
           "name": "gameMode"
+        },
+        {
+          "id": "10:3061769488643192640",
+          "name": "darkMode"
         }
       ],
       "relations": []

@@ -17,6 +17,7 @@
         android:padding="@dimen/padDouble"
         android:gravity="center_horizontal"
         android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="?attr/defaultTextColor"
         tools:text="Tiếng Việt"/>
 
     <ImageButton style="@style/Widget.AppCompat.Button.Borderless"
@@ -37,12 +38,13 @@
         android:id="@+id/subjectProgress"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subjectName"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent=".4"
+        android:progressDrawable="?attr/defaultProgressDrawable"
         android:indeterminate="false"
         android:progress="50" />
 

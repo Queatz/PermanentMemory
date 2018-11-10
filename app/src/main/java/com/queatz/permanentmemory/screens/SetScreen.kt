@@ -26,7 +26,9 @@ class SetScreen : Fragment() {
     private var itemsSubscription: DataSubscription? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
-            inflater.inflate(R.layout.screen_set, container, false)
+            app.on(ThemeManager::class)
+                    .inflatorWithThemeFromSettings(this, inflater)
+                    .inflate(R.layout.screen_set, container, false)
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

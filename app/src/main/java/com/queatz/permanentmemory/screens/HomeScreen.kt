@@ -22,9 +22,10 @@ import io.objectbox.query.OrderFlags.DESCENDING
 import kotlinx.android.synthetic.main.screen_home.*
 
 class HomeScreen : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.screen_home, container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
+        app.on(ThemeManager::class)
+                .inflatorWithThemeFromSettings(this, inflater)
+                .inflate(R.layout.screen_home, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         titleTextView.isFocusable = true
@@ -100,6 +101,17 @@ class HomeScreen : Fragment() {
 
         exportButton.setOnClickListener { app.on(ImportManager::class).export() }
         importButton.setOnClickListener { app.on(ImportManager::class).import() }
+
+        darkModeSwitch.isChecked = app.on(SettingsManager::class).get().darkMode
+
+        darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->
+            app.on(SettingsManager::class).get().apply {
+                darkMode = isChecked
+                app.on(SettingsManager::class).save(this)
+                app.on(NavigationManager::class).fallback()
+            }
+
+        }
     }
 
     override fun onDestroy() {

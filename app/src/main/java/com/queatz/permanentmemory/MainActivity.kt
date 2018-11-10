@@ -16,10 +16,13 @@ import com.queatz.permanentmemory.models.SubjectModel
 import com.queatz.permanentmemory.pool.on
 import com.queatz.permanentmemory.pool.onEnd
 import io.objectbox.android.AndroidScheduler
+import io.objectbox.reactive.DataSubscription
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.drawer_main.*
 
 class MainActivity : FragmentActivity() {
+
+    private var settingsObserver: DataSubscription? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +59,15 @@ class MainActivity : FragmentActivity() {
         sendFeedbackButton.setOnClickListener { app.on(EmailManager::class).sendFeedback() }
 
         app.on(InitializationManager::class).initialize()
+
+        settingsObserver = app.on(SettingsManager::class).observe().observer {
+            it?.darkMode.apply {
+                when (this) {
+                    true -> drawerLayout.setBackgroundResource(R.color.windowBackgroundDark)
+                    false -> drawerLayout.setBackgroundResource(R.color.windowBackground)
+                }
+            }
+        }
     }
 
     override fun onBackPressed() {
@@ -101,6 +113,7 @@ class MainActivity : FragmentActivity() {
 
     override fun onDestroy() {
         onEnd()
+        settingsObserver?.cancel()
         super.onDestroy()
     }
 

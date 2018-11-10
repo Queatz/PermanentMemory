@@ -39,12 +39,13 @@
                     android:id="@+id/itemProgressFront"
                     style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="4dp"
                     android:layout_marginStart="@dimen/padDouble"
                     android:layout_marginTop="@dimen/pad"
                     android:layout_marginEnd="@dimen/padDouble"
                     android:layout_marginBottom="@dimen/padDouble"
                     android:indeterminate="false"
+                    android:progressDrawable="@drawable/progress_bar_accent"
                     android:layout_gravity="top" />
 
                 <TextView
@@ -87,12 +88,13 @@
                     android:id="@+id/itemProgressBack"
                     style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="4dp"
                     android:layout_marginStart="@dimen/padDouble"
                     android:layout_marginTop="@dimen/pad"
                     android:layout_marginEnd="@dimen/padDouble"
                     android:layout_marginBottom="@dimen/padDouble"
                     android:indeterminate="false"
+                    android:progressDrawable="@drawable/progress_bar_accent"
                     android:layout_gravity="top" />
 
                 <TextView

@@ -20,6 +20,7 @@
         android:paddingEnd="@dimen/padDouble"
         android:gravity="center_horizontal"
         android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="?attr/defaultTextColor"
         tools:text="Time"/>
 
     <TextView

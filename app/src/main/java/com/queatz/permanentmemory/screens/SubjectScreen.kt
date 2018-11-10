@@ -28,7 +28,9 @@ class SubjectScreen : Fragment() {
     private var setsSubscription: DataSubscription? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
-        inflater.inflate(R.layout.screen_subject, container, false)
+            app.on(ThemeManager::class)
+                    .inflatorWithThemeFromSettings(this, inflater)
+                    .inflate(R.layout.screen_subject, container, false)
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

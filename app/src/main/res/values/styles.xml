@@ -1,16 +1,32 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <declare-styleable name="DefaultTheme">
+        <attr name="defaultTextColor" format="color" />
+        <attr name="defaultTextColorHint" format="color" />
+        <attr name="reviewProgressDrawable" format="reference" />
+        <attr name="defaultProgressDrawable" format="reference" />
+    </declare-styleable>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="defaultTextColor">@color/textColor</item>
+        <item name="defaultTextColorHint">@color/textColorTransparent</item>
+        <item name="reviewProgressDrawable">@drawable/progress_bar_purple</item>
+        <item name="defaultProgressDrawable">@drawable/progress_bar_accent</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.Dark">
+        <item name="defaultTextColor">@color/textColorDark</item>
+        <item name="defaultTextColorHint">@color/textColorTransparentDark</item>
+        <item name="reviewProgressDrawable">@drawable/progress_bar_purple_dark</item>
+        <item name="defaultProgressDrawable">@drawable/progress_bar_accent_dark</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

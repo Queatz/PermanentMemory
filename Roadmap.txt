@@ -29,11 +29,9 @@ TODO - MEDIUM
 	[ ] Calibrate number of words you can keep in your head (used for implicit cycles)
 		[ ] See forget-modeling below
 	[ ] tips on organizing
-	[ ] 🔴 dark mode (on/off/auto)
+	[.] 🔴 dark mode (on/off/auto)
 	[ ] 🔴 full screen mode hide status and back then
 	[ ] Import into set from CSV
-	[x] export as json/import as json ->
-		permanent_memory_all_subjects.json
 
 [ ] LG progress history screen per set+subject
 	[ ] Vert menu (Progress, Edit, Archive)
@@ -54,11 +52,8 @@ TODO - PHILOSPHY
 TODO - SMALL
 ====
 
-[ ] 💠 release again
-[ ] 💠 after reviewing is complete switch to play mode to complete the missed words
-	[ ] 💠 Also update button action text to reflect actual action for specific sets
-[ ] 💠 disappearing mode, the word disappears after one second before you guess
-[ ] 💠 practice timer, on off in settings
+[ ] disappearing mode, the word disappears after one second before you guess
+[ ] practice timer, on off in settings
 
 
 [ ] Vietnamese girl ask questions / do thing with her
@@ -68,7 +63,7 @@ TODO - SMALL
 
 [ ] write description for Play Store
 
-[ ] 🔴2️⃣ MD Review set button, try every word once (shows up once completed)
+[ ] 🔴2️⃣ MD Review set
 	[ ] 🔴 Words have to-review date on them
 	[ ] 🔴 Set needs review if any words need review in the set
 	[ ] 24h later, 3 days, 7 days, 14 days, 30, 60, 90 days
@@ -93,6 +88,10 @@ TODO - SMALL
 DONE
 ====
 
+	[x] export as json/import as json ->
+		permanent_memory_all_subjects.json
+[x] 💠 after reviewing is complete switch to play mode to complete the missed words
+	[x] 💠 Also update button action text to reflect actual action for specific sets
 [x] SM recycling view shouldn't scroll to focus
 [x] 🔴2️⃣ MD Practice mode (list of flash cards, tap to reveal)
 [x] 🔴1️⃣ Game mode: Text, flashcards

@@ -57,6 +57,7 @@
     <string name="subject_missing">The subject this set belongs to cannot be found.</string>
     <string name="bummer">Bummer</string>
     <string name="keep_playing">Keep playing</string>
+    <string name="enable_night_mode">Enabled night mode</string>
 
     <plurals name="num_cards">
         <item quantity="zero">No cards</item>
