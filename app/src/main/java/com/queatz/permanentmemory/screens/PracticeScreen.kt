@@ -7,10 +7,12 @@ import android.support.v7.widget.LinearLayoutManager.VERTICAL
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import com.queatz.permanentmemory.Extras
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.adapters.FlashCardAdapter
 import com.queatz.permanentmemory.app
+import com.queatz.permanentmemory.logic.ContextManager
 import com.queatz.permanentmemory.logic.DataManager
 import com.queatz.permanentmemory.logic.SettingsManager
 import com.queatz.permanentmemory.logic.ThemeManager
@@ -26,6 +28,16 @@ class PracticeScreen : Fragment() {
 
     private lateinit var set: SetModel
     private lateinit var subject: SubjectModel
+
+    override fun onResume() {
+        super.onResume()
+        app.on(ContextManager::class).context.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        app.on(ContextManager::class).context.window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
             app.on(ThemeManager::class)

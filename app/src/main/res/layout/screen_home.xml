@@ -152,6 +152,21 @@
             app:layout_constraintTop_toBottomOf="@+id/worldOfTheDayHeader"
             tools:text="Giờ" />
 
+        <ImageButton style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/playWordOfTheDayButton"
+            android:contentDescription="@string/play_set"
+            android:layout_width="@dimen/defaultButtonWidth"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/pad"
+            app:layout_constraintTop_toTopOf="@id/worldOfTheDay"
+            app:layout_constraintBottom_toBottomOf="@id/worldOfTheDay"
+            app:layout_constraintStart_toEndOf="@id/worldOfTheDay"
+            android:padding="@dimen/padHalf"
+            android:minWidth="0dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_play_arrow_black_24dp"
+            android:tint="@color/colorAccent"/>
+
         <ProgressBar
             android:id="@+id/wordOfTheDayProgress"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"

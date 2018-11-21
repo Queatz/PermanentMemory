@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.adapters.SetAdapter
 import com.queatz.permanentmemory.app
@@ -45,6 +47,7 @@ class HomeScreen : Fragment() {
         subjectAdapter.isActionVisible = false
 
         app.on(DataManager::class).box(SetModel::class).query()
+                .less(SetModel_.progress, 10)
                 .order(SetModel_.updated, DESCENDING)
                 .build()
                 .find()
@@ -54,10 +57,44 @@ class HomeScreen : Fragment() {
         keepPlayingRecyclerView.isNestedScrollingEnabled = false
 
         app.on(SettingsManager::class).get().wordOfTheDay?.let {
-            app.on(DataManager::class).box(ItemModel::class).get(it)?.let {
-                worldOfTheDay.text = it.question
-                wordOfTheDayProgress.progress = app.on(ProgressManager::class).getProgress(it)
+            app.on(DataManager::class).box(ItemModel::class).get(it)?.let { item ->
+                playWordOfTheDayButton.setOnClickListener { app.on(NavigationManager::class).playSet(item.set) }
+
+                worldOfTheDay.text = item.question
+                wordOfTheDayProgress.progress = app.on(ProgressManager::class).getProgress(item)
                 wordOfTheDayProgress.applyColorFromProgress()
+
+                val animation = AlphaAnimation(1f, 0f)
+                animation.duration = 500L
+                animation.startOffset = 7500L
+                animation.repeatCount = Animation.INFINITE
+                animation.repeatMode = Animation.REVERSE
+                animation.setAnimationListener(object : Animation.AnimationListener {
+
+                    private var flip = false
+
+                    override fun onAnimationRepeat(animation: Animation) {
+                        val hidden = animation.startOffset == 7500L
+                        animation.startOffset = if (hidden) 0L else 7500L
+
+                        if (hidden) {
+                            if (flip) {
+                                worldOfTheDay.text = item.question
+                            } else {
+                                worldOfTheDay.text = item.answer
+                            }
+
+                            flip = !flip
+                        }
+                    }
+
+                    override fun onAnimationEnd(animation: Animation) {
+                    }
+
+                    override fun onAnimationStart(animation: Animation) {
+                    }
+                })
+                worldOfTheDay.startAnimation(animation)
             }
         }
 

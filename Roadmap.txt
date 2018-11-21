@@ -79,13 +79,22 @@ TODO - SMALL
 	[ ] 500 times (gold)
 	[ ] A->B 1 star, B->A Another star
 
-[ ] 🔴 ability to view word of the day inverse (auto switch 10s)
+
 [ ] 🔴 "4 words need review"
 [ ] 🔴 Pin set to top
+[ ] tap on card to flip after showing answer
 
+[ ] use learned words out on the field
+[ ] dark cards white text
+[ ] DO include blue to-review sets in "keep playing" section
 
 DONE
 ====
+
+[x] 🔴 ability to view word of the day inverse (auto switch 10s)
+[x] don't include completed sets in keep playing section
+[x] status bar black in night mode
+[x] hide status bar
 
 [x] 🔴 dark mode (on/off)
 	[x] export as json/import as json ->

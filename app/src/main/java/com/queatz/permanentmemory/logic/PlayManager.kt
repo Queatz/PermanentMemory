@@ -2,6 +2,7 @@ package com.queatz.permanentmemory.logic
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.view.WindowManager
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.app
 import com.queatz.permanentmemory.models.*
@@ -16,6 +17,15 @@ class PlayManager : PoolMember() {
     private var isInverse = false
     private var isReviewing = false
     private val alreadyReviewed: MutableList<Long> = mutableListOf()
+
+    override fun onPoolInit() {
+        app.on(ContextManager::class).context.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
+    }
+
+    override fun onPoolEnd() {
+        app.on(ContextManager::class).context.window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    }
 
     var onAnswer: ((AnswerResult) -> Unit)? = null
     var onNext: ((OnNextItem) -> Unit)? = null

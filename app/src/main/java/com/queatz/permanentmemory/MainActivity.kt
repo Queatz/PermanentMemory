@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import android.support.v4.view.GravityCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import com.queatz.permanentmemory.adapters.SubjectAdapter
 import com.queatz.permanentmemory.logic.*
