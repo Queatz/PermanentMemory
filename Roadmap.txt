@@ -1,3 +1,18 @@
+
+TODO
+====
+
+ [ ] P0 (S) ability to edit button names
+ [ ] P0 (M) edit number of attempts per set needed to be considered "learned"
+
+ [ ] P1 (L) scheduled reminders with alarm function
+ [ ] P1 (M) option to restrict answering questions to 1 per day, set "spacing" to daily [ there are no more to review today ]
+
+ [ ] P2 (M) add a time window at which reviews can happen
+ [ ] P2 (S) add shortcut to set to home screen (play)
+
+ [ ] P3 (M) (?) add decay of "learned" status over time
+
 ENHANCE
 ====
 
@@ -36,7 +51,7 @@ TODO - MEDIUM
 	[ ] Vert menu (Progress, Edit, Archive)
 
 
-TODO - PHILOSPHY
+TODO - PHILOSOPHY
 ====
 
 
@@ -48,11 +63,20 @@ TODO - PHILOSPHY
 [ ] 🔴 Jacob learns best by being seriously challenged to learn a language
 	[ ] Jacob learning process: Discover -> Use -> See Result -> Repeat
 
+TODO - OTHER
+
+[ ] play all sets, review items first, then words near complete, then new words
+
+[ ] Permanent memory is missing some sort of validation or measuring of results something to reach for
+    Quiz: Whole sentences, answer words 1 by 1 until complete
+
+
 TODO - SMALL
 ====
 
 [ ] disappearing mode, the word disappears after one second before you guess
 [ ] practice timer, on off in settings
+[ ] animate progress bar in set
 
 
 [ ] Vietnamese girl ask questions / do thing with her
@@ -91,6 +115,7 @@ TODO - SMALL
 DONE
 ====
 
+[x] reveal when words have been learned animate green bar on top and then flip card - while playing
 [x] 🔴 ability to view word of the day inverse (auto switch 10s)
 [x] don't include completed sets in keep playing section
 [x] status bar black in night mode

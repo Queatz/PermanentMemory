@@ -1,7 +1,7 @@
 package com.queatz.permanentmemory.logic
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.queatz.permanentmemory.Extras
 import com.queatz.permanentmemory.models.ItemModel
 import com.queatz.permanentmemory.models.ItemModel_

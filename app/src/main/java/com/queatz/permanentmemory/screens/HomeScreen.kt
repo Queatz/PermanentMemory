@@ -1,14 +1,14 @@
 package com.queatz.permanentmemory.screens
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.adapters.SetAdapter
 import com.queatz.permanentmemory.app
@@ -47,7 +47,7 @@ class HomeScreen : Fragment() {
         subjectAdapter.isActionVisible = false
 
         app.on(DataManager::class).box(SetModel::class).query()
-                .less(SetModel_.progress, 10)
+                .less(SetModel_.progress, 100)
                 .order(SetModel_.updated, DESCENDING)
                 .build()
                 .find()

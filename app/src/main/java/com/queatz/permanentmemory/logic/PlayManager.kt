@@ -15,7 +15,7 @@ class PlayManager : PoolMember() {
     private lateinit var subject: SubjectModel
     private lateinit var item: ItemModel
     private var isInverse = false
-    private var isReviewing = false
+    internal var isReviewing = false
     private val alreadyReviewed: MutableList<Long> = mutableListOf()
 
     override fun onPoolInit() {

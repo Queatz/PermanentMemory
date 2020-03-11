@@ -1,10 +1,10 @@
 package com.queatz.permanentmemory.adapters
 
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.app
 import com.queatz.permanentmemory.logic.ProgressManager

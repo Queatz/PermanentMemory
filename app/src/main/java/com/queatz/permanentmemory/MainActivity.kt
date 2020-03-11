@@ -3,14 +3,13 @@ package com.queatz.permanentmemory
 import android.app.Service
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
-import android.support.v4.view.GravityCompat
-import android.support.v7.widget.LinearLayoutManager
+import androidx.core.view.GravityCompat
 import android.view.View
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.queatz.permanentmemory.adapters.SubjectAdapter
 import com.queatz.permanentmemory.logic.*
 import com.queatz.permanentmemory.models.SubjectModel
@@ -35,7 +34,7 @@ class MainActivity : FragmentActivity() {
 
         menuButton.setOnClickListener { drawerLayout.openDrawer(GravityCompat.START) }
 
-        worldRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        worldRecyclerView. layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         val worldAdapter = SubjectAdapter({
             app.on(NavigationManager::class).showSubject(it.objectBoxId)
             drawerLayout.closeDrawer(GravityCompat.START)
@@ -119,6 +118,7 @@ class MainActivity : FragmentActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         app.on(FileManager::class).onActivityResult(requestCode, resultCode, data)
     }
 }

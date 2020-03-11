@@ -4,10 +4,10 @@ package com.queatz.permanentmemory.screens
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.queatz.permanentmemory.Extras
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.app
@@ -31,7 +31,26 @@ class FlashCardScreen : Fragment() {
         val review = arguments?.getBoolean(Extras.ACTIVITY) ?: false
 
         on(PlayManager::class).onAnswer = {
-            on(PlayManager::class).next()
+            if (!on(PlayManager::class).isReviewing && it.brainSample.correct && it.item.streak >= 10) {
+                itemProgressBack.progress = 100
+                itemProgressBack.applyColorFromProgress()
+                itemProgressBack.visibility = View.VISIBLE
+                itemProgressFront.progress = 100
+                itemProgressFront.applyColorFromProgress()
+                itemProgressFront.visibility = View.VISIBLE
+                blockButtons = true
+                flashCardFlipView.postDelayed({
+                    blockButtons = false
+                    on(PlayManager::class).next()
+                    flashCardFlipView.postDelayed({
+                        itemProgressBack.visibility = View.GONE
+                        itemProgressFront.visibility = View.GONE
+                    }, 100)
+                }, 700)
+            } else {
+                on(PlayManager::class).next()
+            }
+
         }
 
         on(PlayManager::class).onNext = {

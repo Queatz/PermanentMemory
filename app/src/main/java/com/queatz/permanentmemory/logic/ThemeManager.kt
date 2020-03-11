@@ -1,8 +1,8 @@
 package com.queatz.permanentmemory.logic
 
-import android.support.v4.app.Fragment
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
+import androidx.fragment.app.Fragment
 import com.queatz.permanentmemory.R
 import com.queatz.permanentmemory.pool.PoolMember
 

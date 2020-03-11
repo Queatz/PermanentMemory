@@ -1,6 +1,6 @@
 package com.queatz.permanentmemory.adapters
 
-import android.support.v7.util.DiffUtil
+import androidx.recyclerview.widget.DiffUtil
 import com.queatz.permanentmemory.models.BaseModel
 
 open class ModelDiffCallback(private val oldItems: List<BaseModel>, private val newItems: List<BaseModel>) : DiffUtil.Callback() {
