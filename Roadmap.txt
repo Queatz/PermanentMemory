@@ -11,7 +11,7 @@ TODO
  [ ] P2 (M) add a time window at which reviews can happen
  [ ] P2 (S) add shortcut to set to home screen (play)
 
- [ ] P3 (M) (?) add decay of "learned" status over time
+ [ ] P3 (M) (?) add decay of "learned" status over time (decay ends if completely learned)
 
 ENHANCE
 ====
